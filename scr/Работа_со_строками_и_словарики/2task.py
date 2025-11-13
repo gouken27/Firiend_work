@@ -1,24 +1,25 @@
-# Задание: подсчитать гласные, согласные и цифры в слове/фразе, используя словарь и setdefault
+# Задание: Запросить у пользователя какое-нибудь слово или фразу. 
+# Подсчитать количество гласных, согласных и цифр в слове.
 
-text = input("Введите слово или фразу: ")
+phrase = input("Введите слово или фразу: ")
 
-counts = {}
+counts = {
+    'гласные': 0,
+    'согласные': 0,
+    'цифры': 0
+}
 
-vowels = "аеёиоуыэюяАЕЁИОУЫЭЮЯ"
-consonants = "бвгджзйклмнпрстфхцчшщБВГДЖЗЙКЛМНПРСТФХЦЧШЩ"
-digits = "0123456789"
+vowels = 'ауоыэяюёие'
+consonants = 'бвгджзйклмнпрстфхцчшщ'
 
-for char in text:
+for char in phrase.lower():
     if char in vowels:
-        counts.setdefault("гласные", 0)
-        counts["гласные"] += 1
+        counts['гласные'] += 1
     elif char in consonants:
-        counts.setdefault("согласные", 0)
-        counts["согласные"] += 1
-    elif char in digits:
-        counts.setdefault("цифры", 0)
-        counts["цифры"] += 1
+        counts['согласные'] += 1
+    elif char.isdigit():
+        counts['цифры'] += 1
 
-print(f"Гласных: {counts.get('гласные', 0)}")
-print(f"Согласных: {counts.get('согласные', 0)}")
-print(f"Цифр: {counts.get('цифры', 0)}")
+print(f"Гласных: {counts['гласные']}")
+print(f"Согласных: {counts['согласные']}")
+print(f"Цифр: {counts['цифры']}")

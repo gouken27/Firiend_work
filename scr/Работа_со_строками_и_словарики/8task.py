@@ -1,17 +1,15 @@
-def transform_text(text):
-    words = text.split()
-    result = []
-    
-    for word in words:
-        length = len(word)
-        if length >= 3:  # только для слов из 3+ букв
-            result.append(str(length) * length)
-        else:
-            result.append(word)  # короткие слова оставляем как есть
-    
-    return ' '.join(result)
+text = "варкалось, хливкие шорьки пырялись по наве"
 
-# Пример использования
-print("введите текст:")
-text =  input()
-print(transform_text(text))
+words = text.split()
+result_words = []
+
+for word in words:
+    # Убираем знаки препинания для подсчета букв
+    clean_word = ''.join(char for char in word if char.isalpha())
+    
+    replacement = str(len(clean_word)) * len(clean_word)
+    
+    result_words.append(replacement)
+
+result = ' '.join(result_words)
+print(result)

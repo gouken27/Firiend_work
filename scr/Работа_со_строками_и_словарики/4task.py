@@ -1,12 +1,12 @@
-# Задание: удалить из текста все гласные
+# Задание: Удалить из текста все гласные
 
-text = input("Введите текст: ")
+vowels = 'аеёиоуыэюя'
 
-vowels = "аеёиоуыэюяАЕЁИОУЫЭЮЯ"
-result = ""
+text = "варкалось, хливкие шорьки пырялись по наве"
 
+result = ''
 for char in text:
-    if char not in vowels:
+    if char.lower() not in vowels:
         result += char
 
 print(result)

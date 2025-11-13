@@ -1,23 +1,20 @@
-# Задание: подсчитать гласные, согласные и цифры в слове/фразе
+# Задание: Запросить у пользователя какое-нибудь слово или фразу. 
+# Подсчитать количество гласных, согласных и цифр в слове.
 
-text = input("Введите слово или фразу: ")
+phrase = input("Введите слово или фразу: ")
 
-vowels = "аеёиоуыэюяАЕЁИОУЫЭЮЯ"
-consonants = "бвгджзйклмнпрстфхцчшщБВГДЖЗЙКЛМНПРСТФХЦЧШЩ"
-digits = "0123456789"
+vowels = 0
+consonants = 0
+digits = 0
 
-v_count = 0
-c_count = 0
-d_count = 0
+for char in phrase.lower():
+    if char in 'ауоыэяюёие':
+        vowels += 1
+    elif char in 'бвгджзйклмнпрстфхцчшщ':
+        consonants += 1
+    elif char.isdigit():
+        digits += 1
 
-for char in text:
-    if char in vowels:
-        v_count += 1
-    elif char in consonants:
-        c_count += 1
-    elif char in digits:
-        d_count += 1
-
-print(f"Гласных: {v_count}")
-print(f"Согласных: {c_count}")
-print(f"Цифр: {d_count}")
+print(f"Гласных: {vowels}")
+print(f"Согласных: {consonants}")
+print(f"Цифр: {digits}")

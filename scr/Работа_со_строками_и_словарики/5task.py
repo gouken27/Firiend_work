@@ -2,7 +2,7 @@
 
 import re
 
-text = input("Введите текст: ")
+text = "Там царь Кащей над златом чахнет; там русский дух… там Русью пахнет!"
 
 words = re.split(r'\W+', text)
 words = [word for word in words if word]  # убираем пустые строки
