@@ -1,7 +1,7 @@
 # Python 2030 — Сборник задач для изучения Python
 
 Этот репозиторий создан на основе заданий с сайта  
-[https://www.python2030.ru/ш](https://www.python2030.ru/ш)  
+[https://www.python2030.ru](https://www.python2030.ru)  
 (Верстальщику сайта — низкий поклон и поцелуи в ручки ❤️)
 
 
@@ -45,15 +45,15 @@
 1. Откройте нужную папку в `src/` (например, `src/block_1/`)
 2. Найдите файл `.py` с задачами
 
-![alt text](image.png)
+![alt text](media/image.png)
 
 3. Щёлкните по нему **правой кнопкой мыши** → «Изменить с помощью IDLE» (или «Открыть с помощью» → выбрать Python)
 
-![alt text](image-1.png)
+![alt text](media/image-1.png)
 
 4. В открывшемся окне нажмите **F5** или меню **Run → Run Module**
 
-![alt text](image-2.png)
+![alt text](media/image-2.png)
 
 Готово! Код выполнится.
 
@@ -61,19 +61,19 @@
 1. Зайдите в папку `IDE/`
 2. Запустите `python_launcher.exe` (можно даже с флешки!)
 
-![alt text](image-3.png)
+![alt text](media/image-3.png)
 
 3. В меню программы выберите **File → Open**
 
-![alt text](image-4.png)
+![alt text](media/image-4.png)
 
 4. Перейдите в нужную папку внутри `src/`, выберите `.py` файл
 
-![alt text](image-5.png)
+![alt text](media/image-5.png)
 
 5. Нажмите **F5** или кнопку **Run**
 
-![alt text](image-2.png)
+![alt text](media/image-2.png)
 
 ### Способ 3 — Через командную строку (для тех, кто уже в теме)
 ```bash
