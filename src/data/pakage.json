@@ -1,0 +1,28 @@
+{
+  "emojis": ["😀", "😂", "😍", "🥰", "😎", "🔥", "❤️", "👍", "🎉", "🌟", "🚀", "💯"],
+  "imagePaths": [
+    "/assets/images/photo1.jpg",
+    "/assets/images/banner.png",
+    "uploads/profile-pic.webp",
+    "/media/gallery/img_004.jpg"
+  ],
+  "singleImagePath": "/assets/images/main-hero.jpg",
+  "textFilePaths": [
+    "/docs/readme.txt",
+    "/data/notes.txt",
+    "logs/app.log",
+    "/config/settings.txt"
+  ],
+  "profiles": [
+    "profile_100001",
+    "profile_234567",
+    "profile_345678",
+    "profile_456789",
+    "profile_567890",
+    "profile_678901",
+    "profile_789012",
+    "profile_890123",
+    "profile_901234",
+    "profile_012345"
+  ]
+}

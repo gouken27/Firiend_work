@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <button onclick="modal.show()">Открыть</button>
+
+<dialog id="modal">
+  <p>Содержимое модалки</p>
+  <button onclick="modal.close()">Закрыть</button>
+</dialog>
+
+<button id="myBtn">Загрузка...</button>
+
+<script>
+fetch('../data/pakage.json')
+  .then(res => res.json())
+  .then(data => {
+
+    const btn = document.getElementById('myBtn')
+    btn.textContent = data.emojis[3]
+  })
+</script>
+</body>
+</html>
