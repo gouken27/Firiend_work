@@ -1,0 +1,18 @@
+{
+  "hero": {
+    "title":    "Фотограф мечты",
+    "subtitle": "Хочешь крутые и стильные фото? Или мечтаешь научиться фотошопу?"
+  },
+  "examples": [
+    { "img": "https://picsum.photos/seed/1/220/300", "label": "Портрет"  },
+    { "img": "https://picsum.photos/seed/2/220/300", "label": "Пейзаж"   },
+    { "img": "https://picsum.photos/seed/3/220/300", "label": "Стрит"    },
+    { "img": "https://picsum.photos/seed/4/220/300", "label": "Fashion"  },
+    { "img": "https://picsum.photos/seed/5/220/300", "label": "Репортаж" }
+  ],
+  "teachers": [
+    { "img": "https://picsum.photos/seed/10/80/80", "name": "Алексей" },
+    { "img": "https://picsum.photos/seed/11/80/80", "name": "Мария"   },
+    { "img": "https://picsum.photos/seed/12/80/80", "name": "Дима"    }
+  ]
+}

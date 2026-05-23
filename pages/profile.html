@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Профиль</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header id="header"></header>
+  <main>
+    <!-- Карточка профиля -->
+    <section>
+      <img id="profileAvatar" src="" alt="Аватар" width="80" height="80">
+      <h2 id="profileName"></h2>
+      <p>Фотограф и преподаватель</p>
+      <button id="editBtn">Редактировать</button>
+      <button id="logoutBtn">Выход</button>
+    </section>
+
+    <!-- Форма регистрации -->
+    <section>
+      <h3>Присоединиться</h3>
+      <form id="registerForm">
+        <label>Имя<br><input type="text" name="name" required></label><br>
+        <label>Email<br><input type="email" name="email" required></label><br>
+        <button type="submit">Зарегистрироваться</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Модалка редактирования -->
+  <dialog id="editModal">
+    <h3>Редактировать профиль</h3>
+    <form id="editForm">
+      <label>Имя<br><input type="text" name="name"></label><br><br>
+      <button type="submit">Сохранить</button>
+      <button type="button" id="cancelEdit">Отмена</button>
+    </form>
+  </dialog>
+
+  <script type="module" src="../js/profile.js"></script>
+</body>
+</html>
