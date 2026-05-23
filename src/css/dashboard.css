@@ -1,0 +1,37 @@
+/* ===== Дашборд ===== */
+
+/* Сетка статистики */
+#stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* Карточка статистики */
+.stat-card {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Название показателя */
+.stat-card__title {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #666;
+}
+
+/* Значение показателя */
+.stat-card__value {
+  font-size: 1.8rem;
+  color: #333;
+  font-weight: 700;
+}

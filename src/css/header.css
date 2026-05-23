@@ -1,0 +1,139 @@
+/* ===== Глобальные стили ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Хедер ===== */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 100;
+  gap: 16px;
+}
+
+/* Ссылки в хедере */
+header a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Логотип */
+.header__logo {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo img {
+  height: 40px;
+}
+
+/* Навигация */
+.header__nav {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  justify-content: center;
+}
+
+.header__nav a {
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.header__nav a:hover {
+  color: #666;
+}
+
+/* Профиль пользователя */
+.header__profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #333;
+}
+
+/* Аватар пользователя */
+header img.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+/* Кнопка бургер меню */
+.header__burger-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Мобильное меню */
+.header__mobile-menu {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 12px;
+  z-index: 999;
+}
+
+.header__mobile-menu a,
+.header__mobile-menu button {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  text-align: left;
+  text-decoration: none;
+  color: #333;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.header__mobile-menu a:hover,
+.header__mobile-menu button:hover {
+  background: #f0f0f0;
+}
+
+/* Кнопка закрытия меню */
+.header__close-menu {
+  background: #f0f0f0;
+  color: #333;
+}
+
+/* Мобильная адаптивность */
+@media (max-width: 768px) {
+  /* Скрываем десктопную навигацию */
+  .header__nav {
+    display: none;
+  }
+
+  /* Показываем кнопку меню */
+  #burgerBtn,
+  .header__burger-btn {
+    display: block;
+  }
+
+  /* Скрываем имя пользователя на мобилке */
+  #username {
+    display: none;
+  }
+}
+
+

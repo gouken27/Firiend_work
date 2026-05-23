@@ -1,20 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./src/css/index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная — Фотограф мечты</title>
+  <link rel="icon" href="src/data/media/nerd.webp" type="image/webp">
+  <!-- Глобальные стили проекта -->
+  <link rel="stylesheet" href="./src/css/index.css">
+  <!-- Стили Swiper (CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 </head>
 <body>
-    
-    <header>
-        <a href="src/Pages/test.html">тест</a>
-    </header>
 
-    <main>
+  <!-- Хедер вставляется JS-модулем header.js -->
+  <header id="header"></header>
 
-    </main>
-    <script type="module" src="./src/js/index.js"></script>
+  <main>
+
+    <!-- Секция-герой: заголовок и подзаголовок (текст вставит main.js) -->
+    <section class="hero">
+      <h1></h1>
+      <p></p>
+    </section>
+
+    <!-- Секция примеров работ со Swiper-слайдером -->
+    <section class="section">
+      <h2>Примеры работ</h2>
+      <!--
+        Здесь main.js создаст .swiper-outer с кнопками ← →,
+        внутри которого находится сам .swiper
+      -->
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <!-- Слайды добавляются динамически через main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция преподавателей (карточки вставит main.js) -->
+    <section class="section">
+      <h2>Преподаватели</h2>
+      <div class="teachers"></div>
+    </section>
+
+    <!-- Форма обратной связи -->
+    <section class="section feedback">
+      <h2>Обратная связь</h2>
+      <input  type="text"  placeholder="Имя"         autocomplete="name">
+      <input  type="email" placeholder="Email"        autocomplete="email">
+      <textarea rows="4"   placeholder="Сообщение"></textarea>
+      <button type="button">Отправить</button>
+    </section>
+
+  </main>
+
+  <!-- Библиотека Swiper -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Инициализация страницы -->
+  <script type="module">
+    import { renderHeader } from './src/js/header.js';
+    import { renderMain }   from './src/js/main.js';
+
+    // Сначала хедер (асинхронный), потом контент
+    await renderHeader();
+    renderMain();
+  </script>
+
 </body>
 </html>

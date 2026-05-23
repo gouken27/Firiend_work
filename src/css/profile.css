@@ -1,0 +1,185 @@
+/* ===== Профиль =====  */
+
+/* Основной контейнер профиля */
+main {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Карточка профиля */
+.profile-card {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+/* Заголовок карточки профиля */
+.profile-card__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Аватар пользователя */
+.profile-card__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ddd;
+}
+
+/* Информация профиля */
+.profile-card__info h2 {
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.profile-card__info p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Кнопки профиля */
+.profile-card__buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.profile-card__btn {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.profile-card__btn--primary {
+  background: #333;
+  color: #fff;
+}
+
+.profile-card__btn--primary:hover {
+  background: #555;
+}
+
+.profile-card__btn--secondary {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.profile-card__btn--secondary:hover {
+  background: #e0e0e0;
+}
+
+/* Форма регистрации */
+.registration-form {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.registration-form h3 {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+/* Группа полей формы */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #333;
+}
+
+/* Кнопка отправки */
+.form-group button[type="submit"] {
+  width: 100%;
+  padding: 10px 14px;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.form-group button[type="submit"]:hover {
+  background: #555;
+}
+
+/* Модальное окно */
+dialog {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  max-width: 500px;
+  z-index: 1000;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Заголовок модального окна */
+dialog h3 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Кнопки в модальном окне */
+dialog .form-group {
+  display: flex;
+  gap: 10px;
+}
+
+dialog button {
+  flex: 1;
+}
+
+dialog input {
+  outline: none;
+}
+
+dialog input:focus {
+  border-color: #333;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
