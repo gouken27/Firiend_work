@@ -21,7 +21,6 @@ document.getElementById("nextBtn").addEventListener("click", () => swiper.slideN
 
 // Отправка формы обратной связи с очисткой полей
 document.getElementById("feedbackForm").addEventListener("submit", (e) => { // слушаем отправку формы
-  e.preventDefault(); // отменяем стандартную отправку формы
   e.target.reset(); // очищаем поля формы
   alert("Сообщение отправлено!"); // показываем подтверждение пользователю
 });

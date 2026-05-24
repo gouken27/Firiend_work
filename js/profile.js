@@ -14,13 +14,11 @@ editModal.addEventListener("click", (e) => { // слушаем клик по ф�
 
 // Сохраняем изменения профиля и закрываем окно
 document.getElementById("editForm").addEventListener("submit", (e) => { // обработка отправки формы редактирования
-  e.preventDefault(); // отменяем стандартную отправку
   editModal.close(); // закрываем диалог после сохранения
 });
 
 // Обработка формы регистрации пользователя
 document.getElementById("registerForm").addEventListener("submit", (e) => { // обработка отправки формы регистрации
-  e.preventDefault(); // отменяем стандартную отправку
   e.target.reset(); // очищаем поля после успешной регистрации
   alert("Регистрация успешна!"); // показываем подтверждение
 });
