@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <!-- Инициализация темы до рендера страницы -->
   <script>if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark");</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +14,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 </head>
 <body>
+  <!-- Шапка сайта с навигацией и переключателем темы -->
   <header>
-    <button class="btn btn-icon burger" id="burgerBtn">☰</button>
+    <button class="btn btn-icon burger" id="burgerBtn" aria-label="Открыть меню">☰</button>
     <a class="logo-link" href="index.html">
       <img src="media/header/logo.png" alt="Логотип" height="45">
       <img src="media/header/text_logo.webp" alt="Академия света" height="45">
@@ -25,11 +27,13 @@
       <a href="pages/courses.html">Курсы</a>
       <a href="pages/profile.html">Профиль</a>
     </nav>
-    <button class="btn btn-icon" id="themeBtn" title="Сменить тему">☀️</button>
+    <button class="btn btn-icon" id="themeBtn" title="Сменить тему" aria-label="Переключить тему">☀️</button>
     <a class="profile-link" href="pages/profile.html">
       <img id="avatar" src="media/header/un_profile.jpeg" alt="Аватар" width="32" height="32">
       <span class="username">Megu_UwU</span>
     </a>
+
+    <!-- Мобильное меню, которое открывается через кнопку бургер -->
     <dialog class="mobile-menu" id="mobileMenu">
       <nav>
         <a href="index.html">Главная</a>
@@ -41,16 +45,19 @@
     </dialog>
   </header>
 
+  <!-- Основное содержимое главной страницы -->
   <main>
+    <!-- Hero-блок с названием и коротким призывом -->
     <section id="hero">
       <h1>Фотограф мечты</h1>
       <p>Хочешь крутые и стильные фото? Или мечтаешь научиться фотошопу?</p>
     </section>
 
+    <!-- Слайдер с примерами работ -->
     <section>
       <h2>Примеры работ</h2>
       <div class="swiper-outer">
-        <button class="btn btn-icon swiper-btn" id="prevBtn">&#8592;</button>
+        <button class="btn btn-icon swiper-btn" id="prevBtn" aria-label="Предыдущий слайд">&#8592;</button>
         <div class="swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="media/course_present/Fashion.jpg" alt="Портрет"><p>Портрет</p></div>
@@ -60,10 +67,11 @@
             <div class="swiper-slide"><img src="media/course_present/stret.jpg" alt="Репортаж"><p>Репортаж</p></div>
           </div>
         </div>
-        <button class="btn btn-icon swiper-btn" id="nextBtn">&#8594;</button>
+        <button class="btn btn-icon swiper-btn" id="nextBtn" aria-label="Следующий слайд">&#8594;</button>
       </div>
     </section>
 
+    <!-- Список преподавателей -->
     <section>
       <h2>Преподаватели</h2>
       <div class="teachers">
@@ -73,6 +81,7 @@
       </div>
     </section>
 
+    <!-- Форма обратной связи -->
     <section id="feedback">
       <h2>Обратная связь</h2>
       <form id="feedbackForm">
@@ -84,6 +93,7 @@
     </section>
   </main>
 
+  <!-- Подвал сайта -->
   <footer>
     <span>Сделано студентом <a href="pages/profile.html">Megu_UwU</a></span>
     <div class="footer-user">
@@ -93,6 +103,7 @@
     </div>
   </footer>
 
+  <!-- Подключение скриптов и внешней библиотеки слайдера -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="js/theme.js"></script>
   <script src="js/menu.js"></script>

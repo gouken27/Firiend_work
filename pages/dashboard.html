@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <!-- Инициализация темы до загрузки страницы -->
   <script>if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark");</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,9 @@
   <link rel="stylesheet" href="../css/pages.css">
 </head>
 <body>
+  <!-- Шапка со ссылками на страницы и мобильным меню -->
   <header>
-    <button class="btn btn-icon burger" id="burgerBtn">☰</button>
+    <button class="btn btn-icon burger" id="burgerBtn" aria-label="Открыть меню">☰</button>
     <a class="logo-link" href="../index.html">
       <img src="../media/header/logo.png" alt="Логотип" height="45">
       <img src="../media/header/text_logo.webp" alt="Академия света" height="45">
@@ -24,11 +26,13 @@
       <a href="courses.html">Курсы</a>
       <a href="profile.html">Профиль</a>
     </nav>
-    <button class="btn btn-icon" id="themeBtn" title="Сменить тему">☀️</button>
+    <button class="btn btn-icon" id="themeBtn" title="Сменить тему" aria-label="Переключить тему">☀️</button>
     <a class="profile-link" href="profile.html">
       <img id="avatar" src="../media/header/un_profile.jpeg" alt="Аватар" width="32" height="32">
       <span class="username">Megu_UwU</span>
     </a>
+
+    <!-- Мобильное меню для узких экранов -->
     <dialog class="mobile-menu" id="mobileMenu">
       <nav>
         <a href="../index.html">Главная</a>
@@ -40,6 +44,7 @@
     </dialog>
   </header>
 
+  <!-- Основная информационная панель -->
   <main class="dashboard-page">
     <div class="dashboard-top">
       <div>
@@ -48,6 +53,7 @@
       </div>
     </div>
 
+    <!-- Верхняя сетка: время, приветствие, календарь -->
     <section class="dashboard-grid">
       <article class="card dashboard-card">
         <p class="label">Сейчас</p>
@@ -71,6 +77,7 @@
       </article>
     </section>
 
+    <!-- Блок статистики -->
     <section class="card dashboard-card">
       <div class="dashboard-card-head">
         <div>
@@ -85,6 +92,7 @@
       </div>
     </section>
 
+    <!-- Графики активности -->
     <section class="chart-grid">
       <article class="card dashboard-card">
         <div class="dashboard-card-head">
@@ -131,6 +139,7 @@
     </section>
   </main>
 
+  <!-- Подвал сайта -->
   <footer>
     <span>Сделано студентом <a href="profile.html">Megu_UwU</a></span>
     <div class="footer-user">
@@ -140,6 +149,7 @@
     </div>
   </footer>
 
+  <!-- Подключение общих скриптов -->
   <script src="../js/theme.js"></script>
   <script src="../js/menu.js"></script>
   <script src="../js/dashboard.js"></script>

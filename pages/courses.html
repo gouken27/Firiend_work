@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <!-- Инициализация темы до загрузки страницы -->
   <script>if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark");</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,9 @@
   <link rel="stylesheet" href="../css/pages.css">
 </head>
 <body>
+  <!-- Шапка сайта с навигацией и переключателем темы -->
   <header>
-    <button class="btn btn-icon burger" id="burgerBtn">☰</button>
+    <button class="btn btn-icon burger" id="burgerBtn" aria-label="Открыть меню">☰</button>
     <a class="logo-link" href="../index.html">
       <img src="../media/header/logo.png" alt="Логотип" height="45">
       <img src="../media/header/text_logo.webp" alt="Академия света" height="45">
@@ -24,11 +26,13 @@
       <a href="courses.html">Курсы</a>
       <a href="profile.html">Профиль</a>
     </nav>
-    <button class="btn btn-icon" id="themeBtn" title="Сменить тему">☀️</button>
+    <button class="btn btn-icon" id="themeBtn" title="Сменить тему" aria-label="Переключить тему">☀️</button>
     <a class="profile-link" href="profile.html">
       <img id="avatar" src="../media/header/un_profile.jpeg" alt="Аватар" width="32" height="32">
       <span class="username">Megu_UwU</span>
     </a>
+
+    <!-- Мобильное меню на малых экранах -->
     <dialog class="mobile-menu" id="mobileMenu">
       <nav>
         <a href="../index.html">Главная</a>
@@ -40,10 +44,12 @@
     </dialog>
   </header>
 
+  <!-- Список доступных курсов -->
   <main>
     <h1>Все курсы</h1>
     <p>Выберите курс для обучения</p>
     <div class="courses-grid">
+      <!-- Карточка курса: основы фотографии -->
       <div class="card course-card">
         <img src="../media/course/Course1.jpeg" alt="Основы фотографии">
         <h3>Основы фотографии</h3>
@@ -51,6 +57,8 @@
         <strong>2 999 ₽</strong>
         <button type="button" class="btn btn-primary">Подробнее</button>
       </div>
+
+      <!-- Карточка курса: портретная съёмка -->
       <div class="card course-card">
         <img src="../media/course/Course2.jpg" alt="Портретная съёмка">
         <h3>Портретная съёмка</h3>
@@ -58,6 +66,8 @@
         <strong>4 999 ₽</strong>
         <button type="button" class="btn btn-primary">Подробнее</button>
       </div>
+
+      <!-- Карточка курса: пейзажная фотография -->
       <div class="card course-card">
         <img src="../media/course/Course3.jpg" alt="Пейзажная фотография">
         <h3>Пейзажная фотография</h3>
@@ -65,6 +75,8 @@
         <strong>3 999 ₽</strong>
         <button type="button" class="btn btn-primary">Подробнее</button>
       </div>
+
+      <!-- Карточка курса: ретушь в Photoshop -->
       <div class="card course-card">
         <img src="../media/course/Course4.jpg" alt="Ретушь в Photoshop">
         <h3>Ретушь в Photoshop</h3>
@@ -75,6 +87,7 @@
     </div>
   </main>
 
+  <!-- Подвал сайта -->
   <footer>
     <span>Сделано студентом <a href="profile.html">Megu_UwU</a></span>
     <div class="footer-user">
@@ -84,6 +97,7 @@
     </div>
   </footer>
 
+  <!-- Подключение общих скриптов -->
   <script src="../js/theme.js"></script>
   <script src="../js/menu.js"></script>
 </body>

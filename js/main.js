@@ -1,5 +1,6 @@
 // main.js — слайдер Swiper и форма обратной связи
 
+// Инициализируем карусель с примерами работ
 const swiper = new Swiper(".swiper", {
   effect: "coverflow",
   grabCursor: true,
@@ -14,9 +15,11 @@ const swiper = new Swiper(".swiper", {
   }
 });
 
+// Переключение слайдов по кнопкам
 document.getElementById("prevBtn").addEventListener("click", () => swiper.slidePrev());
 document.getElementById("nextBtn").addEventListener("click", () => swiper.slideNext());
 
+// Отправка формы обратной связи с очисткой полей
 document.getElementById("feedbackForm").addEventListener("submit", (e) => {
   e.preventDefault();
   e.target.reset();
