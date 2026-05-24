@@ -1,23 +1,147 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <script>if(localStorage.getItem("theme")==="dark")document.documentElement.classList.add("dark");</script>
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark");</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Дашборд</title>
-    <link rel="stylesheet" href="../css/base.css">
+  <link rel="icon" href="../media/header/logo.png" type="image/png">
+  <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/pages.css">
 </head>
 <body>
-  <header id="header"></header>
-  <main>
-    <h1>Дашборд</h1>
-    <div id="stats"></div>
-  </main>
-  <footer id="footer"></footer>
+  <header>
+    <button class="btn btn-icon burger" id="burgerBtn">☰</button>
+    <a class="logo-link" href="../index.html">
+      <img src="../media/header/logo.png" alt="Логотип" height="45">
+      <img src="../media/header/text_logo.webp" alt="Академия света" height="45">
+    </a>
+    <nav>
+      <a href="../index.html">Главная</a>
+      <a href="dashboard.html">Дашборд</a>
+      <a href="courses.html">Курсы</a>
+      <a href="profile.html">Профиль</a>
+    </nav>
+    <button class="btn btn-icon" id="themeBtn" title="Сменить тему">☀️</button>
+    <a class="profile-link" href="profile.html">
+      <img id="avatar" src="../media/header/un_profile.jpeg" alt="Аватар" width="32" height="32">
+      <span class="username">Megu_UwU</span>
+    </a>
+    <dialog class="mobile-menu" id="mobileMenu">
+      <nav>
+        <a href="../index.html">Главная</a>
+        <a href="dashboard.html">Дашборд</a>
+        <a href="courses.html">Курсы</a>
+        <a href="profile.html">Профиль</a>
+      </nav>
+      <button class="btn btn-secondary" id="closeMenu">Закрыть</button>
+    </dialog>
+  </header>
 
-  <script type="module" src="../js/dashboard.js"></script>
+  <main class="dashboard-page">
+    <div class="dashboard-top">
+      <div>
+        <p class="kicker">Дашборд</p>
+        <h1>Краткая сводка</h1>
+      </div>
+    </div>
+
+    <section class="dashboard-grid">
+      <article class="card dashboard-card">
+        <p class="label">Сейчас</p>
+        <p id="dateLabel"></p>
+        <h2 id="clock" class="clock-value"></h2>
+        <p id="greeting" class="greeting"></p>
+        <p id="status" class="status"></p>
+      </article>
+
+      <article class="card dashboard-card">
+        <div class="dashboard-card-head">
+          <div>
+            <p class="label">Календарь</p>
+            <h2 id="monthLabel"></h2>
+          </div>
+        </div>
+        <div class="calendar-weekdays">
+          <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+        </div>
+        <div id="calendarGrid" class="calendar-grid"></div>
+      </article>
+    </section>
+
+    <section class="card dashboard-card">
+      <div class="dashboard-card-head">
+        <div>
+          <p class="label">Статистика</p>
+          <h2>Общие показатели</h2>
+        </div>
+      </div>
+      <div class="stats">
+        <div><strong>12</strong><p>Всего курсов</p></div>
+        <div><strong>342</strong><p>Студентов</p></div>
+        <div><strong>156</strong><p>Часов обучения</p></div>
+      </div>
+    </section>
+
+    <section class="chart-grid">
+      <article class="card dashboard-card">
+        <div class="dashboard-card-head">
+          <div>
+            <p class="label">График</p>
+            <h2>Активность по дням</h2>
+          </div>
+        </div>
+        <div class="mini-bars">
+          <div class="mini-bar"><span style="height: 32%"></span><label>Пн</label><strong>32</strong></div>
+          <div class="mini-bar"><span style="height: 46%"></span><label>Вт</label><strong>46</strong></div>
+          <div class="mini-bar"><span style="height: 38%"></span><label>Ср</label><strong>38</strong></div>
+          <div class="mini-bar"><span style="height: 55%"></span><label>Чт</label><strong>55</strong></div>
+          <div class="mini-bar"><span style="height: 49%"></span><label>Пт</label><strong>49</strong></div>
+          <div class="mini-bar"><span style="height: 21%"></span><label>Сб</label><strong>21</strong></div>
+        </div>
+      </article>
+
+      <article class="card dashboard-card">
+        <div class="dashboard-card-head">
+          <div>
+            <p class="label">График</p>
+            <h2>Поток активности</h2>
+          </div>
+        </div>
+        <div class="mini-line-chart">
+          <svg viewBox="0 0 320 140" role="img" aria-label="Поток активности">
+            <path d="M24 112 C 66 98, 108 84, 150 90 S 192 62, 234 74 S 276 48, 316 56" />
+            <circle cx="24" cy="112" r="4" />
+            <circle cx="66" cy="98" r="4" />
+            <circle cx="108" cy="84" r="4" />
+            <circle cx="150" cy="90" r="4" />
+            <circle cx="192" cy="62" r="4" />
+            <circle cx="234" cy="74" r="4" />
+            <circle cx="276" cy="48" r="4" />
+            <circle cx="316" cy="56" r="4" />
+          </svg>
+          <div class="mini-line-labels">
+            <span>08:00</span><span>10:00</span><span>12:00</span>
+            <span>14:00</span><span>16:00</span><span>18:00</span>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <span>Сделано студентом <a href="profile.html">Megu_UwU</a></span>
+    <div class="footer-user">
+      <img src="../media/header/un_profile.jpeg" alt="Аватар" width="28" height="28">
+      <span>Megu_UwU</span>
+      <a href="mailto:Megu_UwU@gmail.com">✉</a>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/menu.js"></script>
+  <script src="../js/dashboard.js"></script>
 </body>
 </html>

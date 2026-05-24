@@ -1,32 +1,80 @@
-/* pages.css — стили отдельных страниц: главная, курсы, дашборд, профиль */
+/* pages.css — стили отдельных секций */
 
-/* ── Главная: преподаватели ── */
-#teachers        { display: flex; gap: 24px; flex-wrap: wrap; }
-#teachers div    { text-align: center; }
-#teachers img    { border-radius: 50%; object-fit: cover; }
-#teachers p      { margin-top: 6px; font-size: 0.9rem; color: var(--text-muted); }
+/* ── Общая карточка с рамкой ── */
+.card { border: 1px solid var(--border); border-radius: 6px; background: var(--bg-card); }
 
-/* ── Главная: форма обратной связи ── */
-#feedback        { margin-top: 16px; padding: 12px 0; }
+/* ── Преподаватели ── */
+.teachers { display: flex; gap: 24px; flex-wrap: wrap; }
+.teachers div { text-align: center; }
+.teachers img { border-radius: 50%; object-fit: cover; }
+.teachers p { margin-top: 6px; font-size: .9rem; color: var(--text-muted); }
 
-/* ── Дашборд: статистика ── */
-#stats           { display: flex; gap: 20px; flex-wrap: wrap; }
-#stats div       { border: 1px solid var(--border); border-radius: 6px;
-                   padding: 16px 24px; min-width: 140px; background: var(--bg-card); }
-#stats strong    { font-size: 1.8rem; display: block; }
+/* ── Статистика ── */
+.stats { display: flex; gap: 12px; flex-wrap: wrap; }
+.stats div { min-width: 110px; padding: 16px 24px; }
+.stats strong { font-size: 1.8rem; display: block; }
 
-/* ── Курсы: сетка карточек ── */
-#courses-grid    { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
-.course-card     { border: 1px solid var(--border); border-radius: 6px;
-                   overflow: hidden; background: var(--bg-card); }
+/* ── Курсы ── */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+.course-card { overflow: hidden; }
 .course-card img { width: 100%; height: 160px; object-fit: cover; }
-.course-card h3,
-.course-card p,
-.course-card strong,
-.course-card button  { margin: 8px 12px; display: block; }
-.course-card button  { margin-bottom: 12px; padding: 6px 14px; }
+.course-card h3, .course-card p, .course-card strong, .course-card .btn { margin: 8px 12px; display: block; }
+.course-card .btn { margin-bottom: 12px; padding: 6px 14px; }
 
 /* ── Профиль ── */
 main section + section { margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--border); }
-#profileAvatar         { border-radius: 50%; object-fit: cover; margin-bottom: 10px; }
-#editBtn, #logoutBtn   { margin-top: 10px; margin-right: 8px; }
+.profile-avatar { border-radius: 50%; object-fit: cover; margin-bottom: 10px; }
+.profile-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+
+/* ── Дашборд ── */
+.dashboard-page { display: flex; flex-direction: column; gap: 14px; }
+.dashboard-card { padding: 16px; }
+.dashboard-top, .dashboard-card-head { display: flex; justify-content: space-between; gap: 12px; }
+.dashboard-grid, .chart-grid { display: grid; gap: 12px; }
+.dashboard-grid { grid-template-columns: .95fr 1.05fr; align-items: start; }
+.chart-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.label { font-size: .76rem; color: var(--text-muted); margin-bottom: 4px; }
+.kicker { color: var(--text-muted); margin-bottom: 4px; }
+.clock-value { font-size: 1.5rem; font-weight: 800; margin-bottom: 6px; }
+.greeting, .status { margin-bottom: 4px; }
+.status { color: var(--text-muted); }
+
+/* ── Календарь ── */
+.calendar-weekdays, .calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+}
+.calendar-weekdays { font-size: .76rem; text-align: center; }
+.calendar-day { min-height: 34px; padding: 6px 0; text-align: center; }
+.calendar-day.is-muted { opacity: .45; }
+.calendar-day.is-today { color: var(--accent); }
+.calendar-day-number { font-size: .88rem; font-weight: 700; }
+
+/* ── Графики ── */
+.mini-bars { display: flex; align-items: end; gap: 10px; min-height: 160px; }
+.mini-bar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: .76rem;
+}
+.mini-bar span { width: 100%; min-height: 8px; border-radius: 999px 999px 0 0; background: var(--accent); }
+
+.mini-line-chart { display: flex; flex-direction: column; gap: 8px; }
+.mini-line-chart svg { width: 100%; height: 160px; }
+.mini-line-chart path, .mini-line-chart circle { fill: var(--accent); stroke: var(--accent); }
+.mini-line-chart path { stroke-width: 2; fill: none; }
+.mini-line-labels { display: flex; justify-content: space-between; font-size: .76rem; color: var(--text-muted); }
+
+@media (max-width: 900px) {
+  .dashboard-grid, .chart-grid { grid-template-columns: 1fr; }
+  .dashboard-top, .dashboard-card-head { flex-direction: column; align-items: start; }
+}

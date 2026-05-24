@@ -1,6 +1,0 @@
-[
-  { "label": "Главная",   "href": "index.html"          },
-  { "label": "Дашборд",   "href": "pages/dashboard.html" },
-  { "label": "Курсы",     "href": "pages/courses.html"   },
-  { "label": "Профиль",   "href": "pages/profile.html"   }
-]
