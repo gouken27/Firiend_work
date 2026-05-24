@@ -1,18 +1,17 @@
 // header.js — рендер шапки и переключение темы на всех страницах
 
-import { loadHTML, loadJSON } from './utils.js';
+import { loadHTML, loadJSON, ROOT } from './utils.js';
 
-// Применяем тему из localStorage немедленно, до рендера хедера,
-// чтобы избежать мерцания (flash of unstyled content)
+// Применяем тему из localStorage немедленно — до рендера, без мерцания
 if (localStorage.getItem('theme') === 'dark') {
   document.documentElement.classList.add('dark');
 }
 
-export function renderHeader(root) {
+export function renderHeader() {
   return Promise.all([
-    loadHTML(root, 'pages/header.html'),
-    loadJSON(root, 'data/nav.json'),
-    loadJSON(root, 'data/user.json')
+    loadHTML('pages/header.html'),
+    loadJSON('data/nav.json'),
+    loadJSON('data/user.json')
   ]).then(([html, navData, user]) => {
     const headerEl = document.getElementById('header');
     if (!headerEl) return;
@@ -20,19 +19,21 @@ export function renderHeader(root) {
 
     // Навигация (десктоп + мобильная)
     const navHTML = navData
-      .map(({ href, label }) => `<a href="${href.replace('{ROOT}', root)}">${label}</a>`)
+      .map(({ href, label }) => `<a href="${ROOT}/${href}">${label}</a>`)
       .join(' ');
-    document.getElementById('mainNav')  ?.setHTML?.(navHTML) || (document.getElementById('mainNav')  && (document.getElementById('mainNav').innerHTML   = navHTML));
-    document.getElementById('mobileNav')?.setHTML?.(navHTML) || (document.getElementById('mobileNav') && (document.getElementById('mobileNav').innerHTML = navHTML));
+    const mainNav   = document.getElementById('mainNav');
+    const mobileNav = document.getElementById('mobileNav');
+    if (mainNav)   mainNav.innerHTML   = navHTML;
+    if (mobileNav) mobileNav.innerHTML = navHTML;
 
     // Логотип, аватар, имя
     const set = (id, prop, val) => { const el = document.getElementById(id); if (el) el[prop] = val; };
-    set('logo',     'src',         `${root}/${user.logo}`);
-    set('text',     'src',         `${root}/${user.text}`);
-    set('avatar',   'src',         `${root}/${user.avatar}`);
-    set('username', 'textContent',  user.name);
-    set('logoLink',    'href', `${root}/index.html`);
-    set('profileLink', 'href', `${root}/pages/profile.html`);
+    set('logo',        'src',         `${ROOT}/${user.logo}`);
+    set('text',        'src',         `${ROOT}/${user.text}`);
+    set('avatar',      'src',         `${ROOT}/${user.avatar}`);
+    set('username',    'textContent',  user.name);
+    set('logoLink',    'href',        `${ROOT}/index.html`);
+    set('profileLink', 'href',        `${ROOT}/pages/profile.html`);
 
     // Бургер-меню
     const mobileMenu = document.getElementById('mobileMenu');
@@ -47,7 +48,7 @@ export function renderHeader(root) {
       });
     }
 
-    // Переключатель темы — кнопка гарантированно есть в DOM после innerHTML выше
+    // Переключатель темы — кнопка уже в DOM после innerHTML
     const btn = document.getElementById('themeBtn');
     if (btn) {
       btn.textContent = document.documentElement.classList.contains('dark') ? '🌙' : '☀️';

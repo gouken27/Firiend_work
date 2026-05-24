@@ -23,10 +23,7 @@
 .course-card h3,
 .course-card p,
 .course-card strong,
-.course-card button  { 
-    margin: 8px 12px; 
-    display: block; 
-}
+.course-card button  { margin: 8px 12px; display: block; }
 .course-card button  { margin-bottom: 12px; padding: 6px 14px; }
 
 /* ── Профиль ── */

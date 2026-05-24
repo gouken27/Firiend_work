@@ -1,11 +1,11 @@
 // footer.js — рендер подвала на всех страницах
 
-import { loadHTML, loadJSON } from './utils.js';
+import { loadHTML, loadJSON, ROOT } from './utils.js';
 
-export function renderFooter(root, authorProfileHref) {
+export function renderFooter() {
   return Promise.all([
-    loadHTML(root, 'pages/footer.html'),
-    loadJSON(root, 'data/user.json')
+    loadHTML('pages/footer.html'),
+    loadJSON('data/user.json')
   ]).then(([html, user]) => {
     const footerEl = document.getElementById('footer');
     if (!footerEl) return;
@@ -14,11 +14,11 @@ export function renderFooter(root, authorProfileHref) {
     const authorLink = document.getElementById('footerAuthorLink');
     if (authorLink) {
       authorLink.textContent = user.name;
-      authorLink.href = authorProfileHref || `${root}/pages/profile.html`;
+      authorLink.href = `${ROOT}/pages/profile.html`;
     }
 
     const avatar = document.getElementById('footerAvatar');
-    if (avatar) avatar.src = `${root}/${user.avatar}`;
+    if (avatar) avatar.src = `${ROOT}/${user.avatar}`;
 
     const name = document.getElementById('footerName');
     if (name) name.textContent = user.name;
