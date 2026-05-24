@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark");</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Портретная съёмка</title>
+  <link rel="icon" href="../../media/header/logo.png" type="image/png">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/pages.css">
+</head>
+<body>
+  <header>
+    <button class="btn btn-icon burger" id="burgerBtn">☰</button>
+    <a class="logo-link" href="../../index.html">
+      <img src="../../media/header/logo.png" alt="Логотип" height="45">
+      <img src="../../media/header/text_logo.webp" alt="Академия света" height="45">
+    </a>
+    <nav>
+      <a href="../../index.html">Главная</a>
+      <a href="../dashboard.html">Дашборд</a>
+      <a href="../courses.html">Курсы</a>
+      <a href="../profile.html">Профиль</a>
+    </nav>
+    <button class="btn btn-icon" id="themeBtn" title="Сменить тему">☀️</button>
+    <a class="profile-link" href="../profile.html">
+      <img id="avatar" src="../../media/header/un_profile.jpeg" alt="Аватар" width="32" height="32">
+      <span class="username">Megu_UwU</span>
+    </a>
+    <dialog class="mobile-menu" id="mobileMenu">
+      <nav>
+        <a href="../../index.html">Главная</a>
+        <a href="../dashboard.html">Дашборд</a>
+        <a href="../courses.html">Курсы</a>
+        <a href="../profile.html">Профиль</a>
+      </nav>
+      <button class="btn btn-secondary" id="closeMenu">Закрыть</button>
+    </dialog>
+  </header>
+
+  <main class="course-page">
+    <img class="banner" src="../../media/course/Course2.jpg" alt="Портретная съёмка">
+    <h1>Портретная съёмка</h1>
+    <p class="price">4 999 ₽</p>
+
+    <h2>Урок 1. Контакт с моделью</h2>
+    <p>Хороший портрет — это не про дорогую камеру, а про доверие между фотографом и человеком в кадре. В первом уроке мы учимся общаться с моделью: как помочь ей расслабиться, подсказать позу и поймать живую эмоцию вместо натянутой улыбки.</p>
+    <p>Запомните: камера фиксирует настроение. Если человеку комфортно — это видно на снимке. Поэтому начинаем не с настроек, а с разговора.</p>
+
+    <div class="lesson-locked">
+      <ul class="lessons">
+        <li>Урок 2. Постановка света для лица</li>
+        <li>Урок 3. Ракурсы и позирование</li>
+        <li>Урок 4. Работа с фоном и глубиной резкости</li>
+        <li>Урок 5. Студийная съёмка: практика</li>
+      </ul>
+      <div class="paywall">
+        <p>Доступен только первый урок.</p>
+        <a class="btn btn-primary" href="../profile.html">Купить курс, чтобы открыть все</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>Сделано студентом <a href="../profile.html">Megu_UwU</a></span>
+    <div class="footer-user">
+      <img src="../../media/header/un_profile.jpeg" alt="Аватар" width="28" height="28">
+      <span>Megu_UwU</span>
+      <a href="mailto:Megu_UwU@gmail.com">✉</a>
+    </div>
+  </footer>
+
+  <script src="../../js/theme.js"></script>
+  <script src="../../js/menu.js"></script>
+</body>
+</html>
