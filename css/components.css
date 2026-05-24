@@ -14,6 +14,9 @@
   background: var(--accent); /* фон акцентного цвета */
   color: #f0f0f0; /* светлый текст */
   border-color: var(--accent); /* рамка под цвет акцента */
+  display: block;
+  margin: 12px auto 0; /* отступ сверху и центрирование */
+  width: 48%; /* для иконок внутри кнопки */
 }
 
 .btn-primary:hover { /* состояние наведения для основной кнопки */
