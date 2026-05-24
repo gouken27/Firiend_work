@@ -1,80 +1,244 @@
-/* pages.css — стили отдельных секций */
+/* pages.css — стили для отдельных секций и страниц */
 
 /* ── Общая карточка с рамкой ── */
-.card { border: 1px solid var(--border); border-radius: 6px; background: var(--bg-card); }
+.card { /* общая карточка с рамкой */
+  border: 1px solid var(--border); /* рамка */
+  border-radius: 6px; /* скругление */
+  background: var(--bg-card); /* фон карточки */
+}
 
 /* ── Преподаватели ── */
-.teachers { display: flex; gap: 24px; flex-wrap: wrap; }
-.teachers div { text-align: center; }
-.teachers img { border-radius: 50%; object-fit: cover; }
-.teachers p { margin-top: 6px; font-size: .9rem; color: var(--text-muted); }
+.teachers { /* контейнер с преподавателями */
+  display: flex; /* элементы в строку */
+  gap: 24px; /* расстояние между карточками */
+  flex-wrap: wrap; /* перенос на новую строку */
+}
+
+.teachers div { /* отдельная карточка преподавателя */
+  text-align: center; /* центрируем содержимое */
+}
+
+.teachers img { /* фото преподавателя */
+  border-radius: 50%; /* круглая фотография */
+  object-fit: cover; /* сохраняем пропорции */
+}
+
+.teachers p { /* подпись под именем преподавателя */
+  margin-top: 6px; /* отступ сверху */
+  font-size: .9rem; /* размер текста */
+  color: var(--text-muted); /* приглушённый цвет */
+}
 
 /* ── Статистика ── */
-.stats { display: flex; gap: 12px; flex-wrap: wrap; }
-.stats div { min-width: 110px; padding: 16px 24px; }
-.stats strong { font-size: 1.8rem; display: block; }
+.stats { /* контейнер статистики */
+  display: flex; /* элементы в строку */
+  gap: 12px; /* расстояние между блоками */
+  flex-wrap: wrap; /* перенос на новую строку */
+}
+
+.stats div { /* отдельный блок статистики */
+  min-width: 110px; /* минимальная ширина */
+  padding: 16px 24px; /* внутренние отступы */
+}
+
+.stats strong { /* значение статистики */
+  font-size: 1.8rem; /* крупный размер числа */
+  display: block; /* перенос на новую строку */
+}
 
 /* ── Курсы ── */
-.courses-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 20px;
+.courses-grid { /* сетка карточек с курсами */
+  display: grid; /* сеточная разметка */
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* адаптивные колонки */
+  gap: 20px; /* расстояние между карточками */
 }
-.course-card { overflow: hidden; }
-.course-card img { width: 100%; height: 160px; object-fit: cover; }
-.course-card h3, .course-card p, .course-card strong, .course-card .btn { margin: 8px 12px; display: block; }
-.course-card .btn { margin-bottom: 12px; padding: 6px 14px; }
+
+.course-card { /* карточка курса */
+  overflow: hidden; /* скрываем переполнение */
+}
+
+.course-card img { /* изображение курса */
+  width: 100%; /* на всю ширину карточки */
+  height: 160px; /* фиксированная высота */
+  object-fit: cover; /* заполняем область */
+}
+
+.course-card h3, .course-card p, .course-card strong, .course-card .btn { /* внутренние отступы в карточке курса */
+  margin: 8px 12px; /* отступы вокруг контента */
+  display: block; /* каждый элемент в отдельной строке */
+}
+
+.course-card .btn { /* кнопка внутри карточки курса */
+  margin-bottom: 12px; /* отступ снизу */
+  padding: 6px 14px; /* внутренние отступы */
+}
 
 /* ── Профиль ── */
-main section + section { margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--border); }
-.profile-avatar { border-radius: 50%; object-fit: cover; margin-bottom: 10px; }
-.profile-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+main section + section { /* разделительная линия между секциями */
+  margin-top: 32px; /* отступ сверху */
+  padding-top: 32px; /* внутренний отступ сверху */
+  border-top: 1px solid var(--border); /* верхняя граница */
+}
+
+.profile-avatar { /* фото профиля */
+  border-radius: 50%; /* круглая форма */
+  object-fit: cover; /* сохраняем пропорции */
+  margin-bottom: 10px; /* отступ снизу */
+}
+
+.profile-actions { /* блок кнопок профиля */
+  display: flex; /* элементы в строку */
+  gap: 8px; /* расстояние между кнопками */
+  flex-wrap: wrap; /* перенос на новую строку */
+  margin-top: 10px; /* отступ сверху */
+}
 
 /* ── Дашборд ── */
-.dashboard-page { display: flex; flex-direction: column; gap: 14px; }
-.dashboard-card { padding: 16px; }
-.dashboard-top, .dashboard-card-head { display: flex; justify-content: space-between; gap: 12px; }
-.dashboard-grid, .chart-grid { display: grid; gap: 12px; }
-.dashboard-grid { grid-template-columns: .95fr 1.05fr; align-items: start; }
-.chart-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.dashboard-page { /* контейнер дашборда */
+  display: flex; /* вертикальная колонка */
+  flex-direction: column; /* элементы по вертикали */
+  gap: 14px; /* расстояние между блоками */
+}
 
-.label { font-size: .76rem; color: var(--text-muted); margin-bottom: 4px; }
-.kicker { color: var(--text-muted); margin-bottom: 4px; }
-.clock-value { font-size: 1.5rem; font-weight: 800; margin-bottom: 6px; }
-.greeting, .status { margin-bottom: 4px; }
-.status { color: var(--text-muted); }
+.dashboard-card { /* карточка дашборда */
+  padding: 16px; /* внутренние отступы */
+}
+
+.dashboard-top, .dashboard-card-head { /* верхний блок заголовка карточки */
+  display: flex; /* элементы в строку */
+  justify-content: space-between; /* распределение по краям */
+  gap: 12px; /* расстояние между частями */
+}
+
+.dashboard-grid, .chart-grid { /* сетки дашборда */
+  display: grid; /* сеточная разметка */
+  gap: 12px; /* расстояние между ячейками */
+}
+
+.dashboard-grid { /* сетка верхней части дашборда */
+  grid-template-columns: .95fr 1.05fr; /* две колонки с разными размерами */
+  align-items: start; /* выравнивание по верхнему краю */
+}
+
+.chart-grid { /* сетка графиков */
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* две колонки */
+}
+
+.label { /* подпись к показателю */
+  font-size: .76rem; /* размер текста */
+  color: var(--text-muted); /* приглушённый цвет */
+  margin-bottom: 4px; /* отступ снизу */
+}
+
+.kicker { /* маленький бейдж над заголовком */
+  color: var(--text-muted); /* приглушённый цвет */
+  margin-bottom: 4px; /* отступ снизу */
+}
+
+.clock-value { /* значение времени */
+  font-size: 1.5rem; /* большой размер */
+  font-weight: 800; /* жирный текст */
+  margin-bottom: 6px; /* отступ снизу */
+}
+
+.greeting, .status { /* текст приветствия и статуса */
+  margin-bottom: 4px; /* отступ снизу */
+}
+
+.status { /* статусный текст */
+  color: var(--text-muted); /* приглушённый цвет */
+}
 
 /* ── Календарь ── */
-.calendar-weekdays, .calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 6px;
+.calendar-weekdays, .calendar-grid { /* сетка дней календаря */
+  display: grid; /* сеточная разметка */
+  grid-template-columns: repeat(7, minmax(0, 1fr)); /* 7 колонок */
+  gap: 6px; /* расстояние между ячейками */
 }
-.calendar-weekdays { font-size: .76rem; text-align: center; }
-.calendar-day { min-height: 34px; padding: 6px 0; text-align: center; }
-.calendar-day.is-muted { opacity: .45; }
-.calendar-day.is-today { color: var(--accent); }
-.calendar-day-number { font-size: .88rem; font-weight: 700; }
+
+.calendar-weekdays { /* заголовки дней недели */
+  font-size: .76rem; /* размер текста */
+  text-align: center; /* центрирование */
+}
+
+.calendar-day { /* отдельный день календаря */
+  min-height: 34px; /* минимальная высота */
+  padding: 6px 0; /* внутренние отступы */
+  text-align: center; /* центрирование */
+}
+
+.calendar-day.is-muted { /* дни из соседних месяцев */
+  opacity: .45; /* приглушённая прозрачность */
+}
+
+.calendar-day.is-today { /* текущий день */
+  color: var(--accent); /* цвет акцента */
+}
+
+.calendar-day-number { /* число в ячейке календаря */
+  font-size: .88rem; /* размер цифры */
+  font-weight: 700; /* жирный текст */
+}
 
 /* ── Графики ── */
-.mini-bars { display: flex; align-items: end; gap: 10px; min-height: 160px; }
-.mini-bar {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  font-size: .76rem;
+.mini-bars { /* контейнер вертикальных столбиков */
+  display: flex; /* элементы в строку */
+  align-items: end; /* выравнивание по нижнему краю */
+  gap: 10px; /* расстояние между столбиками */
+  min-height: 160px; /* минимальная высота */
 }
-.mini-bar span { width: 100%; min-height: 8px; border-radius: 999px 999px 0 0; background: var(--accent); }
 
-.mini-line-chart { display: flex; flex-direction: column; gap: 8px; }
-.mini-line-chart svg { width: 100%; height: 160px; }
-.mini-line-chart path, .mini-line-chart circle { fill: var(--accent); stroke: var(--accent); }
-.mini-line-chart path { stroke-width: 2; fill: none; }
-.mini-line-labels { display: flex; justify-content: space-between; font-size: .76rem; color: var(--text-muted); }
+.mini-bar { /* отдельный столбик */
+  flex: 1; /* растягивается */
+  display: flex; /* вертикальная колонка */
+  flex-direction: column; /* элементы сверху вниз */
+  align-items: center; /* центрирование по горизонтали */
+  gap: 6px; /* расстояние между элементами */
+  font-size: .76rem; /* размер текста */
+}
 
-@media (max-width: 900px) {
-  .dashboard-grid, .chart-grid { grid-template-columns: 1fr; }
-  .dashboard-top, .dashboard-card-head { flex-direction: column; align-items: start; }
+.mini-bar span { /* сам столбик графика */
+  width: 100%; /* ширина по контейнеру */
+  min-height: 8px; /* минимальная высота */
+  border-radius: 999px 999px 0 0; /* скругление верхней части */
+  background: var(--accent); /* цвет столбика */
+}
+
+.mini-line-chart { /* контейнер линейного графика */
+  display: flex; /* вертикальная колонка */
+  flex-direction: column; /* элементы сверху вниз */
+  gap: 8px; /* расстояние между элементами */
+}
+
+.mini-line-chart svg { /* SVG-график */
+  width: 100%; /* на всю ширину */
+  height: 160px; /* высота */
+}
+
+.mini-line-chart path, .mini-line-chart circle { /* линии и точки графика */
+  fill: var(--accent); /* заливка */
+  stroke: var(--accent); /* цвет обводки */
+}
+
+.mini-line-chart path { /* линия графика */
+  stroke-width: 2; /* толщина линии */
+  fill: none; /* без заливки */
+}
+
+.mini-line-labels { /* подписи под графиком */
+  display: flex; /* элементы в строку */
+  justify-content: space-between; /* равномерное распределение */
+  font-size: .76rem; /* размер текста */
+  color: var(--text-muted); /* приглушённый цвет */
+}
+
+@media (max-width: 900px) { /* адаптив для средних экранов */
+  .dashboard-grid, .chart-grid { /* одна колонка на узких экранах */
+    grid-template-columns: 1fr; /* один столбец */
+  }
+
+  .dashboard-top, .dashboard-card-head { /* заголовки становятся вертикальными */
+    flex-direction: column; /* столбец */
+    align-items: start; /* выравнивание по левому краю */
+  }
 }

@@ -1,76 +1,134 @@
-/* components.css — кнопки, формы, диалог, слайдер */
+/* components.css — стили кнопок, форм, диалогов и слайдера */
 
 /* ── Кнопки ── */
-.btn {
-  padding: 8px 16px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--text);
-  transition: background .2s, color .2s, border-color .2s;
+.btn { /* базовый стиль кнопки */
+  padding: 8px 16px; /* внутренние отступы */
+  border-radius: 6px; /* скругление углов */
+  border: 1px solid var(--border); /* рамка */
+  background: var(--bg); /* фон */
+  color: var(--text); /* цвет текста */
+  transition: background .2s, color .2s, border-color .2s; /* плавные переходы */
 }
-.btn-primary { background: var(--accent); color: #f0f0f0; border-color: var(--accent); }
-.btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
-.btn-secondary:hover { background: var(--bg-alt); }
-.btn-icon { padding: 4px 8px; border: none; background: transparent; }
-.btn-icon:hover { background: var(--bg-alt); }
+
+.btn-primary { /* основная цветная кнопка */
+  background: var(--accent); /* фон акцентного цвета */
+  color: #f0f0f0; /* светлый текст */
+  border-color: var(--accent); /* рамка под цвет акцента */
+}
+
+.btn-primary:hover { /* состояние наведения для основной кнопки */
+  background: var(--accent-hover); /* более тёмный фон */
+  border-color: var(--accent-hover); /* рамка под новый фон */
+}
+
+.btn-secondary:hover { /* состояние наведения для вторичной кнопки */
+  background: var(--bg-alt); /* подсветка фона */
+}
+
+.btn-icon { /* иконка-кнопка без рамки */
+  padding: 4px 8px; /* внутренние отступы */
+  border: none; /* убираем рамку */
+  background: transparent; /* прозрачный фон */
+}
+
+.btn-icon:hover { /* подсветка иконки при наведении */
+  background: var(--bg-alt); /* фон при наведении */
+}
 
 /* ── Формы ── */
-form label { display: block; margin-bottom: 12px; }
-form input, form textarea {
-  display: block;
-  width: 100%;
-  margin-top: 4px;
-  padding: 8px 10px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  background: var(--bg);
-  color: var(--text);
+form label { /* стили для подписи поля формы */
+  display: block; /* элемент занимает всю ширину */
+  margin-bottom: 12px; /* отступ снизу между полями */
 }
-form input:focus, form textarea:focus { outline: 2px solid var(--text-muted); }
-form .btn { margin-top: 8px; }
+
+form input, form textarea { /* общие стили полей ввода */
+  display: block; /* блоковый элемент */
+  width: 100%; /* на всю ширину */
+  margin-top: 4px; /* небольшой отступ сверху */
+  padding: 8px 10px; /* внутренние отступы */
+  border: 1px solid var(--border); /* рамка */
+  border-radius: 4px; /* скругление */
+  background: var(--bg); /* фон */
+  color: var(--text); /* цвет текста */
+}
+
+form input:focus, form textarea:focus { /* фокус в полях ввода */
+  outline: 2px solid var(--text-muted); /* подсветка outline */
+}
+
+form .btn { /* кнопки внутри формы */
+  margin-top: 8px; /* отступ сверху перед кнопкой */
+}
 
 /* ── Диалог ── */
-dialog {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 24px;
-  max-width: 220px;
-  width: 90%;
-  margin-top: 50px;
-  margin-left: 20px;
-  background: var(--bg);
-  color: var(--text);
-  ba: 1;
+dialog { /* базовый стиль модального окна */
+  border: 1px solid var(--border); /* рамка */
+  border-radius: 8px; /* скругление углов */
+  padding: 24px; /* внутренние отступы */
+  max-width: 420px; /* ограничение ширины */
+  width: 90%; /* ширина по ширине экрана */
+  background: var(--bg); /* фон окна */
+  color: var(--text); /* цвет текста */
 }
-dialog::backdrop { 
-  background: rgba(0, 0, 0, .4); 
+
+dialog::backdrop { /* фон затемнения за модальным окном */
+  background: rgba(0, 0, 0, .4); /* полупрозрачный затемнённый фон */
 }
-dialog .btn { margin-top: 8px; }
+
+dialog .btn { /* кнопки внутри модального окна */
+  margin-top: 8px; /* отступ сверху */
+}
 
 /* ── Слайдер ── */
-.swiper-outer { display: flex; align-items: center; gap: 8px; }
-.swiper { flex: 1; min-width: 0; }
-.swiper-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+.swiper-outer { /* контейнер для слайдера и кнопок */
+  display: flex; /* элементы в строку */
+  align-items: center; /* выравнивание по центру */
+  gap: 8px; /* расстояние между кнопками и слайдером */
 }
-.swiper-slide { text-align: center; }
-.swiper-slide img { width: 160px; height: 220px; object-fit: cover; border-radius: 8px; margin: 0 auto; }
-.swiper-slide p { margin-top: 6px; font-size: .85rem; color: var(--text-muted); }
 
-.search-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  font-size: .8rem;
+.swiper { /* область слайдера */
+  flex: 1; /* занимает всё свободное пространство */
+  min-width: 0; /* разрешает сжиматься */
 }
-.search-badge:hover { background: var(--bg-alt); }
+
+.swiper-btn { /* кнопки прокрутки слайдера */
+  width: 36px; /* ширина */
+  height: 36px; /* высота */
+  border-radius: 50%; /* круглая форма */
+  display: inline-flex; /* выравнивание иконки */
+  align-items: center; /* центр по вертикали */
+  justify-content: center; /* центр по горизонтали */
+  flex-shrink: 0; /* не сжимать кнопку */
+}
+
+.swiper-slide { /* отдельный слайд */
+  text-align: center; /* центрируем контент */
+}
+
+.swiper-slide img { /* изображение внутри слайда */
+  width: 160px; /* фиксированная ширина */
+  height: 220px; /* фиксированная высота */
+  object-fit: cover; /* заполняем область */
+  border-radius: 8px; /* скругление */
+  margin: 0 auto; /* центрирование по горизонтали */
+}
+
+.swiper-slide p { /* подпись под изображением */
+  margin-top: 6px; /* отступ сверху */
+  font-size: .85rem; /* размер текста */
+  color: var(--text-muted); /* приглушённый цвет */
+}
+
+.search-badge { /* стиль кнопки/ссылки на Яндекс */
+  display: inline-flex; /* гибкая inline-обёртка */
+  align-items: center; /* выравнивание содержимого */
+  gap: 6px; /* расстояние между иконкой и текстом */
+  padding: 4px 10px; /* внутренние отступы */
+  border: 1px solid var(--border); /* рамка */
+  border-radius: 6px; /* скругление */
+  font-size: .8rem; /* размер текста */
+}
+
+.search-badge:hover { /* состояние наведения для бейджа */
+  background: var(--bg-alt); /* подсветка фона */
+}

@@ -1,57 +1,110 @@
-/* layout.css — шапка, подвал, main, адаптив */
+/* layout.css — разметка шапки, основного контента, подвала и адаптивности */
 
 /* ── Шапка ── */
-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 10px 20px;
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  background: var(--bg);
-  z-index: 10;
+header { /* фиксируем верхнюю панель сайта */
+  display: flex; /* выстраиваем элементы в строку */
+  align-items: center; /* выравниваем по центру по вертикали */
+  gap: 16px; /* расстояние между элементами шапки */
+  padding: 10px 20px; /* внутренние отступы шапки */
+  border-bottom: 1px solid var(--border); /* нижняя рамка */
+  position: sticky; /* шапка прилипает к верхней части экрана */
+  top: 0; /* фиксируем у верхней границы */
+  background: var(--bg); /* фон шапки */
+  z-index: 10; /* поднимаем над контентом */
 }
-.logo-link, .profile-link { display: flex; align-items: center; gap: 10px; }
-header nav { display: flex; justify-content: center; gap: 16px; flex: 1; }
-header nav a:hover { text-decoration: underline; }
-#avatar { border-radius: 50%; object-fit: cover; }
+
+.logo-link, .profile-link { /* общий стиль ссылок логотипа и профиля */
+  display: flex; /* размещаем элементы в строку */
+  align-items: center; /* выравниваем по центру */
+  gap: 10px; /* расстояние между логотипом и текстом */
+}
+
+header nav { /* основная навигация в шапке */
+  display: flex; /* элементы меню в строку */
+  justify-content: center; /* центрируем пункты меню */
+  gap: 16px; /* расстояние между пунктами */
+  flex: 1; /* меню занимает свободное место */
+}
+
+header nav a:hover { /* эффект при наведении на ссылку меню */
+  text-decoration: underline; /* подчёркиваем ссылку */
+}
+
+#avatar { /* аватар пользователя */
+  border-radius: 50%; /* делаем круглым */
+  object-fit: cover; /* сохраняем пропорции */
+}
 
 /* ── Мобильное меню ── */
-.mobile-menu nav { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px;}
+.mobile-menu nav { /* список ссылок внутри диалога меню */
+  display: flex; /* вертикальная колонка */
+  flex-direction: column; /* элементы по вертикали */
+  gap: 12px; /* расстояние между ссылками */
+  margin-bottom: 16px; /* отступ снизу перед кнопкой закрытия */
+}
 
 /* ── Main ── */
-main {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 32px 20px 64px;
+main { /* основной контейнер страницы */
+  max-width: 900px; /* ограничиваем ширину контента */
+  margin: 0 auto; /* центрируем по горизонтали */
+  padding: 32px 20px 64px; /* внутренние отступы сверху, снизу и по бокам */
 }
-main > * + * { margin-top: 48px; }
-main section { padding: 12px 0; }
+
+main > * + * { /* отступ между соседними секциями */
+  margin-top: 48px; /* верхний отступ между блоками */
+}
+
+main section { /* внутренние отступы в секциях */
+  padding: 12px 0; /* верхний и нижний отступ */
+}
 
 /* ── Подвал ── */
-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 10px 20px;
-  border-top: 1px solid var(--border);
-  position: sticky;
-  bottom: 0;
-  background: var(--bg);
-  z-index: 10;
-  font-size: .85rem;
-  color: var(--text-muted);
+footer { /* нижняя часть страницы */
+  display: flex; /* элементы в строку */
+  align-items: center; /* выравнивание по центру */
+  justify-content: space-between; /* распределение по краям */
+  gap: 16px; /* расстояние между элементами */
+  padding: 10px 20px; /* внутренние отступы */
+  border-top: 1px solid var(--border); /* верхняя рамка */
+  position: sticky; /* прилипает снизу */
+  bottom: 0; /* фиксируем у нижней границы */
+  background: var(--bg); /* фон подвала */
+  z-index: 10; /* поднимаем над контентом */
+  font-size: .85rem; /* уменьшенный размер текста */
+  color: var(--text-muted); /* цвет текста */
 }
-footer a { color: var(--text); text-decoration: underline; }
-footer a:hover { color: var(--text-muted); }
-.footer-user { display: flex; align-items: center; gap: 8px; }
-.footer-user img { border-radius: 50%; object-fit: cover; }
+
+footer a { /* стили ссылок в подвале */
+  color: var(--text); /* цвет ссылки */
+  text-decoration: underline; /* подчёркивание */
+}
+
+footer a:hover { /* эффект при наведении */
+  color: var(--text-muted); /* меняем цвет */
+}
+
+.footer-user { /* блок с пользователем в подвале */
+  display: flex; /* элементы в строку */
+  align-items: center; /* выравнивание */
+  gap: 8px; /* расстояние между элементами */
+}
+
+.footer-user img { /* аватар в подвале */
+  border-radius: 50%; /* круглый аватар */
+  object-fit: cover; /* сохраняем пропорции */
+}
 
 /* ── Мобилки ── */
-@media (max-width: 640px) {
-  header nav { display: none; }
-  .burger { display: block; }
-  .username { display: none; }
+@media (max-width: 640px) { /* адаптив для маленьких экранов */
+  header nav { /* скрываем основную навигацию */
+    display: none; /* прячем меню */
+  }
+
+  .burger { /* показываем кнопку бургер-меню */
+    display: block; /* отображаем кнопку */
+  }
+
+  .username { /* скрываем имя пользователя на узких экранах */
+    display: none; /* убираем имя */
+  }
 }

@@ -1,45 +1,74 @@
-/* base.css — переменные, сброс, типографика */
+/* base.css — базовые переменные, сброс стилей и общая типографика */
 
-:root {
-  --bg: #fff;
-  --bg-alt: #f0f0f0;
-  --bg-card: #fff;
-  --text: #222;
-  --text-muted: #555;
-  --border: #ddd;
-  --accent: #222;
-  --accent-hover: #444;
+:root { /* корневые переменные для светлой темы */
+  --bg: #fff; /* основной фон страницы */
+  --bg-alt: #f0f0f0; /* вторичный фон для блоков */
+  --bg-card: #fff; /* фон карточек */
+  --text: #222; /* основной цвет текста */
+  --text-muted: #555; /* приглушённый текст */
+  --border: #ddd; /* цвет рамок */
+  --accent: #222; /* основной акцентный цвет */
+  --accent-hover: #444; /* цвет акцента при наведении */
 }
 
-html.dark {
-  --bg: #2b2b2b;
-  --bg-alt: #3a3a3a;
-  --bg-card: #333;
-  --text: #e0e0e0;
-  --text-muted: #aaa;
-  --border: #555;
-  --accent: #777;
-  --accent-hover: #999;
+html.dark { /* стили тёмной темы */
+  --bg: #2b2b2b; /* фон страницы в тёмной теме */
+  --bg-alt: #3a3a3a; /* вторичный фон в тёмной теме */
+  --bg-card: #333; /* фон карточек в тёмной теме */
+  --text: #e0e0e0; /* основной текст в тёмной теме */
+  --text-muted: #aaa; /* приглушённый текст в тёмной теме */
+  --border: #555; /* цвет рамок в тёмной теме */
+  --accent: #777; /* акцентный цвет в тёмной теме */
+  --accent-hover: #999; /* акцент при наведении в тёмной теме */
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
-button, input, textarea { font: inherit; }
-button { cursor: pointer; }
-
-body {
-  font-family: system-ui, sans-serif;
-  line-height: 1.5;
-  color: var(--text);
-  background: var(--bg);
+*, *::before, *::after { /* нормализация размеров и отступов */
+  box-sizing: border-box; /* все элементы считают padding и border внутри размеров */
+  margin: 0; /* убираем внешние отступы по умолчанию */
+  padding: 0; /* убираем внутренние отступы по умолчанию */
 }
 
-h1 { font-size: 1.8rem; }
-h2 { font-size: 1.3rem; }
-h3 { font-size: 1.1rem; }
-h1, h2, h3 { margin-bottom: 12px; }
+a { /* сброс стилей ссылок */
+  color: inherit; /* наследуем цвет текста */
+  text-decoration: none; /* убираем подчёркивание */
+}
 
-/* плавная смена темы */
-body, header, footer, dialog, .card { transition: background .3s, color .3s, border-color .3s; }
+img { /* базовые настройки изображений */
+  display: block; /* убираем лишний отступ снизу у изображений */
+  max-width: 100%; /* изображения не выходят за пределы контейнера */
+}
+
+button, input, textarea { /* единый шрифт для интерактивных элементов */
+  font: inherit; /* наследуем шрифт от родителя */
+}
+
+button { /* курсор для кнопок */
+  cursor: pointer; /* показываем указатель */
+}
+
+body { /* общие стили тела документа */
+  font-family: system-ui, sans-serif; /* системный шрифт без засечек */
+  line-height: 1.5; /* комфортная высота строки */
+  color: var(--text); /* основной цвет текста */
+  background: var(--bg); /* основной фон страницы */
+}
+
+h1 { /* заголовок первого уровня */
+  font-size: 1.8rem; /* размер заголовка */
+}
+
+h2 { /* заголовок второго уровня */
+  font-size: 1.3rem; /* размер заголовка */
+}
+
+h3 { /* заголовок третьего уровня */
+  font-size: 1.1rem; /* размер заголовка */
+}
+
+h1, h2, h3 { /* общий отступ под заголовками */
+  margin-bottom: 12px; /* отступ снизу */
+}
+
+body, header, footer, dialog, .card { /* плавная смена темы для ключевых блоков */
+  transition: background .3s, color .3s, border-color .3s; /* анимация перехода цветов */
+}
