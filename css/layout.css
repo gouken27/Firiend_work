@@ -13,15 +13,12 @@ header {
   z-index: 10;
 }
 .logo-link, .profile-link { display: flex; align-items: center; gap: 10px; }
-header nav { display: flex; gap: 16px; flex: 1; }
+header nav { display: flex; justify-content: center; gap: 16px; flex: 1; }
 header nav a:hover { text-decoration: underline; }
 #avatar { border-radius: 50%; object-fit: cover; }
 
-/* ── Бургер ── */
-.burger { display: none; font-size: 1.4rem; }
-
 /* ── Мобильное меню ── */
-.mobile-menu nav { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+.mobile-menu nav { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px;}
 
 /* ── Main ── */
 main {

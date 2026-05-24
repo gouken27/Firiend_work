@@ -35,12 +35,17 @@ dialog {
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 24px;
-  max-width: 420px;
+  max-width: 220px;
   width: 90%;
+  margin-top: 50px;
+  margin-left: 20px;
   background: var(--bg);
   color: var(--text);
+  ba: 1;
 }
-dialog::backdrop { background: rgba(0, 0, 0, .4); }
+dialog::backdrop { 
+  background: rgba(0, 0, 0, .4); 
+}
 dialog .btn { margin-top: 8px; }
 
 /* ── Слайдер ── */
@@ -58,3 +63,14 @@ dialog .btn { margin-top: 8px; }
 .swiper-slide { text-align: center; }
 .swiper-slide img { width: 160px; height: 220px; object-fit: cover; border-radius: 8px; margin: 0 auto; }
 .swiper-slide p { margin-top: 6px; font-size: .85rem; color: var(--text-muted); }
+
+.search-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: .8rem;
+}
+.search-badge:hover { background: var(--bg-alt); }

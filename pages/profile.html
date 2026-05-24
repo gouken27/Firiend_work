@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <!-- Инициализация темы до рендера страницы -->
+  <!-- Сначала применяем сохранённую тему, чтобы страница не мигала при загрузке -->
   <script>if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark");</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,27 +13,37 @@
   <link rel="stylesheet" href="../css/pages.css">
 </head>
 <body>
-  <!-- Шапка сайта -->
+  <!-- Верхняя шапка: логотип, основная навигация, переключатель темы и профиль пользователя -->
   <header>
+    <!-- Кнопка открытия мобильного меню на узких экранах -->
     <button class="btn btn-icon burger" id="burgerBtn" aria-label="Открыть меню">☰</button>
+
+    <!-- Логотип и бренд сайта -->
     <a class="logo-link" href="../index.html">
       <img src="../media/header/logo.png" alt="Логотип" height="45">
       <img src="../media/header/text_logo.webp" alt="Академия света" height="45">
     </a>
+
+    <!-- Основная навигация по разделам сайта -->
     <nav>
       <a href="../index.html">Главная</a>
       <a href="dashboard.html">Дашборд</a>
       <a href="courses.html">Курсы</a>
       <a href="profile.html">Профиль</a>
     </nav>
+
+    <!-- Переключатель светлой и тёмной темы -->
     <button class="btn btn-icon" id="themeBtn" title="Сменить тему" aria-label="Переключить тему">☀️</button>
+
+    <!-- Ссылка на профиль пользователя -->
     <a class="profile-link" href="profile.html">
       <img id="avatar" src="../media/header/un_profile.jpeg" alt="Аватар" width="32" height="32">
       <span class="username">Megu_UwU</span>
     </a>
 
-    <!-- Мобильное меню -->
+    <!-- Мобильное меню, которое открывается кнопкой burger -->
     <dialog class="mobile-menu" id="mobileMenu">
+      <!-- Дублируем ссылки из основной навигации для мобильного вида -->
       <nav>
         <a href="../index.html">Главная</a>
         <a href="dashboard.html">Дашборд</a>
@@ -44,19 +54,24 @@
     </dialog>
   </header>
 
-  <!-- Информация о профиле -->
+  <!-- Основной контент страницы профиля -->
   <main>
+    <!-- Карточка с текущим профилем и действиями пользователя -->
     <section>
       <img class="profile-avatar" src="../media/header/un_profile.jpeg" alt="Аватар" width="80" height="80">
       <h2>Megu_UwU</h2>
       <p>Фотограф и преподаватель</p>
+
+      <!-- Кнопки управления профилем: редактирование и выход -->
       <div class="profile-actions">
+        <!-- Эта кнопка запускает открытие модального окна редактирования -->
         <button class="btn btn-secondary" id="editBtn">Редактировать</button>
+        <!-- Кнопка выхода переносит пользователя на главную страницу -->
         <button class="btn btn-secondary" id="logoutBtn">Выход</button>
       </div>
     </section>
 
-    <!-- Форма регистрации на курс/событие -->
+    <!-- Блок для регистрации или присоединения к мероприятию -->
     <section>
       <h3>Присоединиться</h3>
       <form id="registerForm">
@@ -67,7 +82,7 @@
     </section>
   </main>
 
-  <!-- Модальное окно редактирования профиля -->
+  <!-- Модальное окно для редактирования данных профиля -->
   <dialog id="editModal">
     <h3>Редактировать профиль</h3>
     <form id="editForm">
@@ -77,17 +92,21 @@
     </form>
   </dialog>
 
-  <!-- Подвал сайта -->
+  <!-- Нижняя часть страницы с информацией о разработчике и внешними ссылками -->
   <footer>
     <span>Сделано студентом <a href="profile.html">Megu_UwU</a></span>
     <div class="footer-user">
       <img src="../media/header/un_profile.jpeg" alt="Аватар" width="28" height="28">
       <span>Megu_UwU</span>
       <a href="mailto:Megu_UwU@gmail.com">✉</a>
+      <!-- Внешняя ссылка на Яндекс для поиска или перехода на сервис -->
+      <a class="search-badge" href="https://yandex.ru" target="_blank" rel="noopener">
+        <img src="../media/header/YandexLogo.png" alt="" width="18" height="18"> Яндекс
+      </a>
     </div>
   </footer>
 
-  <!-- Подключение общих скриптов -->
+  <!-- Подключение общих скриптов: тема, мобильное меню и логика профиля -->
   <script src="../js/theme.js"></script>
   <script src="../js/menu.js"></script>
   <script src="../js/profile.js"></script>
