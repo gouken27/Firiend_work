@@ -1,0 +1,75 @@
+/* components.css — переиспользуемые компоненты: кнопки, формы, диалог, слайдер */
+
+/* ── Кнопка-акцент (submit, курсы) ── */
+.btn-primary {
+  padding: 8px 20px;
+  background: var(--accent);
+  color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+}
+.btn-primary:hover { background: var(--accent-hover); }
+
+/* ── Кнопка-вторичная (редактировать, отмена, выход) ── */
+.btn-secondary, #editBtn, #logoutBtn, dialog button[type="button"] {
+  padding: 6px 16px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.btn-secondary:hover, #editBtn:hover, #logoutBtn:hover { background: var(--bg-alt); }
+
+/* ── Формы ── */
+form label           { display: block; margin-bottom: 12px; color: var(--text); }
+form input,
+form textarea        { display: block; width: 100%; margin-top: 4px; padding: 8px 10px;
+                       border: 1px solid var(--border); border-radius: 4px;
+                       background: var(--bg); color: var(--text); }
+form input:focus,
+form textarea:focus  { outline: 2px solid var(--text-muted); }
+form button[type="submit"] { margin-top: 8px; }
+
+/* ── Диалог ── */
+dialog {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 420px;
+  width: 90%;
+  background: var(--bg);
+  color: var(--text);
+}
+dialog::backdrop { background: rgba(0,0,0,0.4); }
+dialog button[type="button"] { margin-top: 8px; }
+
+/* ── Кнопка темы ── */
+#themeBtn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: transform 0.2s;
+}
+#themeBtn:hover { transform: scale(1.2); }
+
+/* ── Swiper ── */
+.swiper-outer   { display: flex; align-items: center; gap: 8px; }
+.swiper         { flex: 1; min-width: 0; }
+.swiper-btn     {
+  width: 36px; height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--text);
+  flex-shrink: 0;
+}
+.swiper-btn:hover      { background: var(--bg-alt); }
+.swiper-slide          { text-align: center; }
+.swiper-slide img      { width: 160px; height: 220px; object-fit: cover; border-radius: 8px; margin: 0 auto; }
+.swiper-slide p        { margin-top: 6px; font-size: 0.85rem; color: var(--text-muted); }
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  background-image: linear-gradient(to left, rgba(0,0,0,0.08), rgba(0,0,0,0)) !important;
+}

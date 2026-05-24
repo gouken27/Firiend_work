@@ -1,157 +1,524 @@
-/* ===== style.css — единственный CSS-файл проекта ===== */
+/* ═══════════════════════════════════════════════════════════════════════════
+   style.css — Единый файл стилей для всего сайта «Академия света».
+   ТЗ §5: стек — HTML5, CSS3, Bootstrap отсутствует, всё написано вручную.
+   ТЗ §6: тёмная/нейтральная схема, крупная типографика, адаптивность,
+           hover-эффекты, плавные переходы.
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-/* Сброс и базовые глобальные стили */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── Сброс отступов и box-model ─────────────────────────────────────────── */
+*, *::before, *::after { 
+  box-sizing: border-box; /* padding и border входят в width/height — удобнее вёрстка */
+  margin: 0;              /* Убираем браузерные отступы снаружи */
+  padding: 0;             /* Убираем браузерные отступы внутри */
+}
 
+/* ── Базовые стили body ──────────────────────────────────────────────────── */
 body {
-  font-family: system-ui, sans-serif;
-  line-height: 1.5;
-  color: #222;
-  background: #fff;
+  font-family: system-ui, sans-serif; /* Системный шрифт — загружается мгновенно */
+  line-height: 1.5;                   /* Межстрочный интервал — улучшает читаемость */
+  color: #222;                        /* Почти-чёрный текст (ТЗ §6 «чёткость, контраст») */
+  background: #fff;                   /* Белый фон страницы */
 }
 
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
-button { cursor: pointer; font: inherit; }
-input, textarea { font: inherit; }
+/* ── Сброс стилей для часто используемых тегов ─────────────────────────── */
+a {
+  color: inherit;       /* Ссылки наследуют цвет родителя — нет синего подчёркивания */
+  text-decoration: none; /* Убираем подчёркивание ссылок по умолчанию */
+}
+img { 
+  display: block;   /* Убирает лишний нижний отступ под изображением (inline baseline) */
+  max-width: 100%;  /* Картинки не выходят за ширину родителя — адаптивность (ТЗ §6) */
+}
+button { 
+  cursor: pointer;  /* Рука при наведении — стандартный UX для кнопок */
+  font: inherit;    /* Кнопки используют шрифт body, а не браузерный default */
+}
+input, textarea { 
+  font: inherit;    /* Поля ввода используют шрифт body */
+}
 
-/* ── Хедер ── */
+/* ══════════════════════════════════════════════════════════════════════════
+   ШАПКА (header)
+   Используется на всех страницах; заполняется через header.js + pages/header.html.
+   ТЗ §4.1: «Фиксированная навигационная панель (nav bar) видна всегда при прокрутке»
+   ════════════════════════════════════════════════════════════════════════════ */
 header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 10px 20px;
-  border-bottom: 1px solid #ddd;
-  position: sticky;
-  top: 0;
-  background: #fff;
-  z-index: 10;
+  display: flex;             /* Flex-контейнер: логотип, nav и аватар в одну строку */
+  align-items: center;       /* Вертикальное выравнивание по центру */
+  gap: 16px;                 /* Расстояние между дочерними элементами */
+  padding: 10px 20px;        /* Внутренние отступы: 10px сверху/снизу, 20px по бокам */
+  border-bottom: 1px solid #ddd; /* Разделитель между шапкой и контентом */
+  position: sticky;          /* Шапка прилипает к верху при прокрутке */
+  top: 0;                    /* Прилипает к самому верху окна */
+  background: #fff;          /* Белый фон, чтобы перекрывать контент снизу */
+  z-index: 10;               /* Шапка поверх остального контента (не перекрывает модалки) */
 }
 
-header nav { display: flex; gap: 16px; flex: 1; }
-header nav a:hover { text-decoration: underline; }
+header nav { 
+  display: flex;  /* Пункты меню в строку */
+  gap: 16px;      /* Расстояние между ссылками навигации */
+  flex: 1;        /* Nav занимает всё свободное пространство между лого и аватаром */
+}
+header nav a:hover { 
+  text-decoration: underline; /* Подчёркивание ссылок при наведении (ТЗ §6 «hover-эффекты») */
+}
 
-/* Аватар в хедере */
-header #avatar { border-radius: 50%; object-fit: cover; }
+/* Аватар в шапке (32×32, устанавливается в header.js) */
+header #avatar { 
+  border-radius: 50%;  /* Делает квадратное изображение круглым */
+  object-fit: cover;   /* Обрезает фото по кругу без искажений */
+}
 
-/* Бургер-кнопка — скрыта на десктопе */
-#burgerBtn { display: none; background: none; border: none; font-size: 1.4rem; }
+/* ── Бургер-кнопка ☰ — скрыта на десктопах ─────────────────────────────── */
+#burgerBtn { display: none;    /* На широких экранах не показываем */
+  background: none;            /* Без фона */
+  border: none;                /* Без рамки */
+  font-size: 1.4rem;           /* Крупный символ ☰ */
+}
 
+/* ── Адаптив: мобилки ≤640px ─────────────────────────────────────────────
+   ТЗ §6: «Адаптивность: корректное отображение на мобильных устройствах»  */
 @media (max-width: 640px) {
-  header nav  { display: none; }
-  #burgerBtn  { display: block; }
-  #username   { display: none; }
+  header nav  { 
+    display: none;  /* Скрываем горизонтальную навигацию на мобилках */
+  }
+  #burgerBtn  { 
+    display: block; /* Показываем бургер-кнопку вместо nav */
+  }
+  #username   { 
+    display: none;  /* Скрываем имя пользователя рядом с аватаром на мобилках */
+  }
 }
 
-/* Мобильное меню */
-#mobileMenu { padding: 20px; border-radius: 8px; border: 1px solid #ddd; }
-#mobileMenu nav { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+/* ── Мобильное меню (нативный <dialog>) ────────────────────────────────── */
+#mobileMenu { 
+  padding: 20px;              /* Внутренние отступы диалога */
+  border-radius: 8px;         /* Скруглённые углы */
+  border: 1px solid #ddd;     /* Тонкая рамка */
+}
+#mobileMenu nav { 
+  display: flex;              /* Пункты меню в колонку */
+  flex-direction: column;     /* Вертикальное расположение ссылок */
+  gap: 12px;                  /* Расстояние между ссылками */
+  margin-bottom: 16px;        /* Отступ перед кнопкой «Закрыть» */
+}
 
-/* ── Основной контент ── */
-main { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
-main > * + * { margin-top: 48px; }
+/* ══════════════════════════════════════════════════════════════════════════
+   ОСНОВНОЙ КОНТЕНТ (main)
+   Центрирует и ограничивает ширину контента на всех страницах.
+   ════════════════════════════════════════════════════════════════════════════ */
+main {
+  max-width: 900px;    /* Максимальная ширина — контент не растягивается на широких мониторах */
+  margin: 0 auto;      /* Центрирование по горизонтали */
+  padding: 32px 20px;  /* Внутренние отступы: 32px сверху/снизу, 20px по бокам */
+}
+main > * + * { 
+  margin-top: 48px; /* Вертикальный отступ между секциями главной страницы */
+}
 
-h1 { font-size: 1.8rem; margin-bottom: 8px; }
-h2 { font-size: 1.3rem; margin-bottom: 16px; }
-h3 { font-size: 1.1rem; margin-bottom: 8px; }
+/* ── Заголовки ──────────────────────────────────────────────────────────── */
+h1 { 
+  font-size: 1.8rem;    /* Крупный заголовок первого уровня (ТЗ §6 «крупная типографика») */
+  margin-bottom: 8px;   /* Отступ снизу между заголовком и подзаголовком */
+}
+h2 { 
+  font-size: 1.3rem;    /* Заголовок секции */
+  margin-bottom: 16px;  /* Отступ между заголовком и контентом секции */
+}
+h3 { 
+  font-size: 1.1rem;    /* Заголовок карточки */
+  margin-bottom: 8px;   /* Отступ под заголовком карточки */
+}
 
-/* ── Swiper ── */
-.swiper-outer { display: flex; align-items: center; gap: 8px; }
-.swiper       { flex: 1; min-width: 0; }
+/* ══════════════════════════════════════════════════════════════════════════
+   SWIPER — Слайдер примеров работ
+   Инициализируется в main.js через new Swiper('.swiper', {...}).
+   ТЗ §4.1: «Блок Было→Стало — визуальный экскурс, сравнение фотографий»
+   ════════════════════════════════════════════════════════════════════════════ */
+.swiper-outer { 
+  display: flex;       /* Кнопки ← → и слайдер в одну строку */
+  align-items: center; /* Вертикальное выравнивание кнопок и слайдера */
+  gap: 8px;            /* Расстояние между кнопками и слайдером */
+}
+.swiper { 
+  flex: 1;      /* Слайдер занимает всё доступное пространство между кнопками */
+  min-width: 0; /* Предотвращает overflow в flex-контейнере */
+}
 
-/* Кнопки ← → */
+/* Кнопки навигации слайдера ← → */
 .swiper-btn {
-  width: 36px; height: 36px;
-  border: 1px solid #999;
-  border-radius: 50%;
-  background: #fff;
-  flex-shrink: 0;
-  font-size: 1rem;
+  width: 36px; height: 36px;   /* Квадратная кнопка */
+  border: 1px solid #999;      /* Серая рамка */
+  border-radius: 50%;          /* Круглая кнопка */
+  background: #fff;            /* Белый фон */
+  flex-shrink: 0;              /* Кнопки не сжимаются при уменьшении экрана */
+  font-size: 1rem;             /* Размер стрелки ← → */
 }
-.swiper-btn:hover { background: #f0f0f0; }
+.swiper-btn:hover { 
+  background: #f0f0f0; /* Светло-серый при наведении (ТЗ §6 «hover-эффекты») */
+}
 
-/* Слайд */
-.swiper-slide { text-align: center; }
-.swiper-slide img { width: 160px; height: 220px; object-fit: cover; border-radius: 8px; margin: 0 auto; }
-.swiper-slide p { margin-top: 6px; font-size: 0.85rem; color: #555; }
+/* Один слайд */
+.swiper-slide { 
+  text-align: center; /* Фото и подпись по центру */
+}
+.swiper-slide img { 
+  width: 160px;         /* Ширина фото на слайде */
+  height: 220px;        /* Высота фото на слайде */
+  object-fit: cover;    /* Обрезает фото без искажений */
+  border-radius: 8px;   /* Скруглённые углы фото */
+  margin: 0 auto;       /* Центрирование изображения */
+}
+.swiper-slide p { 
+  margin-top: 6px;    /* Отступ между фото и подписью */
+  font-size: 0.85rem; /* Мелкий текст подписи */
+  color: #555;        /* Серый цвет подписи */
+}
 
-/* Тени на боковых слайдах — делаем едва заметными */
+/* Тени на боковых слайдах — делаем едва заметными (переопределяем Swiper default) */
 .swiper-slide-shadow-left,
-.swiper-slide-shadow-right { background-image: linear-gradient(to left, rgba(0,0,0,0.08), rgba(0,0,0,0)) !important; }
+.swiper-slide-shadow-right { 
+  background-image: 
+  linear-gradient(to left, rgba(0,0,0,0.08), rgba(0,0,0,0)) !important; /* Очень лёгкая тень */
+}
 
-/* ── Преподаватели ── */
-#teachers { display: flex; gap: 24px; flex-wrap: wrap; }
-#teachers div { text-align: center; }
-#teachers img { border-radius: 50%; object-fit: cover; }
-#teachers p { margin-top: 6px; font-size: 0.9rem; }
+/* ══════════════════════════════════════════════════════════════════════════
+   ПРЕПОДАВАТЕЛИ
+   Карточки рендерятся в main.js из data/main.json → teachers[].
+   ════════════════════════════════════════════════════════════════════════════ */
+#teachers { 
+  display: flex;     /* Карточки преподавателей в строку */
+  gap: 24px;         /* Расстояние между карточками */
+  flex-wrap: wrap;   /* Перенос на новую строку при нехватке места */
+}
+#teachers div { 
+  text-align: center; /* Фото и имя по центру */
+}
+#teachers img { 
+  border-radius: 50%; /* Круглый аватар преподавателя */
+  object-fit: cover;  /* Обрезает без искажений */
+}
+#teachers p { 
+  margin-top: 6px;  /* Отступ между фото и именем */
+  font-size: 0.9rem; /* Чуть меньше базового шрифта */
+}
 
-/* ── Формы ── */
-form label { display: block; margin-bottom: 12px; }
+/* ══════════════════════════════════════════════════════════════════════════
+   ФОРМЫ (обратная связь, регистрация, редактирование)
+   ТЗ §4.1 «форма обратной связи», §4.4 «форма регистрации»
+   ════════════════════════════════════════════════════════════════════════════ */
+form label { 
+  display: block;     /* Каждый label с полем — с новой строки */
+  margin-bottom: 12px; /* Отступ между полями */
+}
 form input, form textarea {
-  display: block;
-  width: 100%;
-  margin-top: 4px;
-  padding: 8px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  display: block;                /* Поле на новой строке под label */
+  width: 100%;                   /* Поле на всю ширину родителя */
+  margin-top: 4px;               /* Маленький отступ между текстом label и полем */
+  padding: 8px 10px;             /* Внутренние отступы поля */
+  border: 1px solid #ccc;        /* Светло-серая рамка */
+  border-radius: 4px;            /* Лёгкое скругление углов */
 }
-form input:focus, form textarea:focus { outline: 2px solid #555; }
+form input:focus, form textarea:focus { 
+  outline: 2px solid #555; /* Тёмный контур при фокусе (ТЗ §6 «все интерактивные элементы имеют эффекты») */
+}
 form button[type="submit"] {
-  margin-top: 8px;
-  padding: 8px 20px;
-  background: #222;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
+  margin-top: 8px;        /* Отступ сверху кнопки */
+  padding: 8px 20px;      /* Внутренние отступы кнопки */
+  background: #222;       /* Тёмный фон кнопки (ТЗ §6 «тёмная цветовая схема») */
+  color: #fff;            /* Белый текст */
+  border: none;           /* Без рамки */
+  border-radius: 4px;     /* Скруглённые углы */
 }
-form button[type="submit"]:hover { background: #444; }
+form button[type="submit"]:hover { 
+  background: #444; /* Чуть светлее при наведении (ТЗ §6 «hover-эффекты») */
+}
 
-/* ── Дашборд ── */
-#stats { display: flex; gap: 20px; flex-wrap: wrap; }
-#stats div { border: 1px solid #ddd; border-radius: 6px; padding: 16px 24px; min-width: 140px; }
-#stats strong { font-size: 1.8rem; display: block; }
+/* ══════════════════════════════════════════════════════════════════════════
+   ДАШБОРД — Статистические карточки
+   Рендерятся в dashboard.js из data/dashboard.json.
+   ТЗ §4.2: «Публичная активность платформы»
+   ════════════════════════════════════════════════════════════════════════════ */
+#stats { 
+  display: flex;   /* Карточки статистики в строку */
+  gap: 20px;       /* Расстояние между карточками */
+  flex-wrap: wrap; /* Перенос на новую строку на узких экранах */
+}
+#stats div { 
+  border: 1px solid #ddd;  /* Рамка вокруг карточки */
+  border-radius: 6px;      /* Скруглённые углы */
+  padding: 16px 24px;      /* Внутренние отступы */
+  min-width: 140px;        /* Минимальная ширина карточки */
+}
+#stats strong { 
+  font-size: 1.8rem;  /* Большое число (342, 12, 156) (ТЗ §6 «крупная типографика») */
+  display: block;     /* Число на отдельной строке */
+}
 
-/* ── Курсы ── */
-#courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
-.course-card { border: 1px solid #ddd; border-radius: 6px; overflow: hidden; }
-.course-card img { width: 100%; height: 160px; object-fit: cover; }
-.course-card h3, .course-card p, .course-card strong, .course-card button { margin: 8px 12px; display: block; }
+/* ══════════════════════════════════════════════════════════════════════════
+   КУРСЫ — Сетка карточек
+   Рендерятся в courses.js из data/courses.json.
+   ТЗ §4.3: «Карточки курсов с описанием, стоимостью и уровнем сложности»
+   ════════════════════════════════════════════════════════════════════════════ */
+#courses-grid { 
+  display: grid;                                          /* CSS Grid для сетки карточек */
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Адаптивные колонки: минимум 240px */
+  gap: 20px;                                              /* Расстояние между карточками */
+}
+.course-card { 
+  border: 1px solid #ddd; /* Рамка вокруг карточки */
+  border-radius: 6px;     /* Скруглённые углы */
+  overflow: hidden;       /* Скрываем углы у картинки (чтобы не торчала из border-radius) */
+}
+.course-card img { 
+  width: 100%;       /* Картинка на всю ширину карточки */
+  height: 160px;     /* Фиксированная высота обложки */
+  object-fit: cover; /* Обрезает без искажений */
+}
+.course-card h3, .course-card p, .course-card strong, .course-card button { 
+  margin: 8px 12px;  /* Горизонтальные отступы внутри карточки */
+  display: block;    /* Каждый элемент с новой строки */
+}
 .course-card button {
-  margin: 8px 12px 12px;
-  padding: 6px 14px;
-  background: #222;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
+  margin: 8px 12px 12px; /* Отступы: 8px сверху, 12px по бокам, 12px снизу */
+  padding: 6px 14px;     /* Внутренние отступы кнопки */
+  background: #222;      /* Тёмная кнопка (ТЗ §6 «тёмная цветовая схема») */
+  color: #fff;           /* Белый текст */
+  border: none;          /* Без рамки */
+  border-radius: 4px;    /* Скруглённые углы */
 }
-.course-card button:hover { background: #444; }
+.course-card button:hover { 
+  background: #444; /* Светлее при наведении (ТЗ §6 «hover-эффекты») */
+}
 
-/* ── Профиль ── */
-main section + section { margin-top: 32px; padding-top: 32px; border-top: 1px solid #eee; }
-#profileAvatar { border-radius: 50%; object-fit: cover; margin-bottom: 10px; }
+/* ══════════════════════════════════════════════════════════════════════════
+   ПРОФИЛЬ — Личная страница пользователя
+   Управляется profile.js из data/user.json.
+   ТЗ §4.4: «Имя, аватар, статус курса, портфолио»
+   ════════════════════════════════════════════════════════════════════════════ */
+/* Разделитель между секциями на странице профиля (карточка / регистрация) */
+main section + section { 
+  margin-top: 32px;         /* Отступ сверху */
+  padding-top: 32px;        /* Внутренний отступ сверху */
+  border-top: 1px solid #eee; /* Горизонтальная линия-разделитель */
+}
+/* Аватар профиля 80×80 */
+#profileAvatar { border-radius: 50%; /* Круглый аватар */
+  object-fit: cover;    /* Обрезает без искажений */
+  margin-bottom: 10px;  /* Отступ под аватаром */
+}
+/* Кнопки «Редактировать» и «Выход» */
 #editBtn, #logoutBtn {
-  margin-top: 10px;
-  margin-right: 8px;
-  padding: 6px 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: #fff;
+  margin-top: 10px;    /* Отступ от имени */
+  margin-right: 8px;   /* Расстояние между кнопками */
+  padding: 6px 16px;   /* Внутренние отступы */
+  border: 1px solid #ccc; /* Серая рамка */
+  border-radius: 4px;  /* Скруглённые углы */
+  background: #fff;    /* Белый фон (второстепенные кнопки — не акцентные) */
 }
-#editBtn:hover, #logoutBtn:hover { background: #f0f0f0; }
+#editBtn:hover, #logoutBtn:hover { 
+  background: #f0f0f0; /* Светло-серый при наведении (ТЗ §6 «hover-эффекты») */
+}
 
-/* ── Диалог (модалка) ── */
+/* ══════════════════════════════════════════════════════════════════════════
+   ДИАЛОГ (модальное окно редактирования профиля)
+   Нативный HTML-элемент <dialog>; управляется profile.js через .showModal()/.close()
+   ════════════════════════════════════════════════════════════════════════════ */
 dialog {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 24px;
-  max-width: 420px;
-  width: 90%;
+  border: 1px solid #ddd;  /* Рамка диалога */
+  border-radius: 8px;      /* Скруглённые углы */
+  padding: 24px;           /* Внутренние отступы */
+  max-width: 420px;        /* Максимальная ширина (ТЗ §6 «адаптивность») */
+  width: 90%;              /* На мобилках занимает 90% ширины экрана */
 }
-dialog::backdrop { background: rgba(0,0,0,0.4); }
+dialog::backdrop { background: rgba(0,0,0,0.4); } /* Полупрозрачный тёмный фон за диалогом */
 dialog button[type="button"] {
-  margin-top: 8px;
-  padding: 6px 14px;
-  border: 1px solid #ccc;
+  margin-top: 8px;         /* Отступ сверху */
+  padding: 6px 14px;       /* Внутренние отступы */
+  border: 1px solid #ccc;  /* Серая рамка */
+  border-radius: 4px;      /* Скруглённые углы */
+  background: #fff;        /* Белый фон (второстепенная кнопка «Отмена») */
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ПОДВАЛ (footer)
+   Используется на всех страницах; заполняется через footer.js + pages/footer.html.
+   ТЗ §4.1: «Нижняя часть страницы (футер) со ссылками на разделы»
+   ════════════════════════════════════════════════════════════════════════════ */
+footer {
+  display: flex;                   /* Flex-контейнер: авторство + пользователь в строку */
+  align-items: center;             /* Вертикальное выравнивание по центру */
+  justify-content: space-between;  /* Разделяем левую и правую части */
+  gap: 16px;                       /* Расстояние между элементами */
+  padding: 10px 20px;              /* Внутренние отступы */
+  border-top: 1px solid #ddd;      /* Разделитель между контентом и футером */
+  position: sticky;                /* Футер прилипает к низу при прокрутке */
+  bottom: 0;                       /* Прилипает к самому низу окна */
+  background: #fff;                /* Белый фон, чтобы перекрывать контент сверху */
+  z-index: 10;                     /* Поверх контента (не перекрывает модалки) */
+  font-size: 0.85rem;              /* Мелкий текст подвала */
+  color: #555;                     /* Серый цвет текста */
+}
+
+footer a {
+  color: #222;                 /* Тёмные ссылки в подвале */
+  text-decoration: underline;  /* Подчёркивание ссылок */
+}
+footer a:hover {
+  color: #555; /* Серее при наведении (ТЗ §6 «hover-эффекты») */
+}
+
+/* Правая часть футера: аватар + имя + email */
+#footerUser {
+  display: flex;       /* Элементы в строку */
+  align-items: center; /* Вертикальное выравнивание */
+  gap: 8px;            /* Расстояние между аватаром, именем и email */
+}
+
+/* Аватар в футере 28×28 */
+#footerAvatar {
+  border-radius: 50%; /* Круглый аватар */
+  object-fit: cover;  /* Обрезает без искажений */
+}
+
+/* Отступ снизу у main — чтобы контент не уходил под прилипающий футер */
+main {
+  padding-bottom: 64px; /* Высота футера ≈ 44px + небольшой запас */
+}
+
+/* ── Секция «Обратная связь» (index.html) — уменьшена высота ───────────────
+   #feedback — id добавлен в index.html на соответствующий <section>          */
+#feedback {
+  margin-top: 16px;  /* Меньший отступ от предыдущей секции (было 48px из main > * + *) */
+  padding: 12px 0;   /* Небольшие внутренние отступы сверху и снизу */
+}
+
+/* ── Секции профиля (pages/profile.html) — уменьшена высота ────────────────
+   Применяется к обеим секциям: карточка профиля и форма регистрации          */
+main section {
+  padding-top: 12px;    /* Уменьшенный отступ сверху внутри секции */
+  padding-bottom: 12px; /* Уменьшенный отступ снизу внутри секции */
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ТЕМА: светлая / тёмная
+   Переключается классом .dark на <body> — добавляет/убирает header.js.
+   Светлая: белый фон #fff, тёмный текст #222.
+   Тёмная:  серый фон #2b2b2b, светлый текст #e0e0e0.
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* Плавный переход при смене темы */
+body, header, footer, dialog, .course-card, #stats div {
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Тёмная тема — применяется когда на <body> есть класс .dark */
+body.dark {
+  background: #2b2b2b;
+  color: #e0e0e0;
+}
+body.dark header {
+  background: #1e1e1e;
+  border-bottom-color: #444;
+}
+body.dark footer {
+  background: #1e1e1e;
+  border-top-color: #444;
+  color: #aaa;
+}
+body.dark footer a {
+  color: #ccc;
+}
+body.dark dialog {
+  background: #2b2b2b;
+  border-color: #555;
+  color: #e0e0e0;
+}
+body.dark form input,
+body.dark form textarea {
+  background: #3a3a3a;
+  border-color: #555;
+  color: #e0e0e0;
+}
+body.dark .course-card {
+  border-color: #555;
+  background: #333;
+}
+body.dark #stats div {
+  border-color: #555;
+  background: #333;
+}
+body.dark #mobileMenu {
+  background: #2b2b2b;
+  border-color: #555;
+}
+body.dark nav a {
+  color: #ccc;
+}
+body.dark nav a:hover {
+  background: #3a3a3a;
+  color: #fff;
+}
+body.dark section {
+  background: transparent;
+}
+body.dark #hero {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+body.dark .swiper-slide {
+  background: #333;
+  color: #e0e0e0;
+}
+body.dark .swiper-slide p {
+  color: #ccc;
+}
+body.dark #teachers div {
+  background: #333;
+  border-color: #555;
+}
+body.dark #teachers p {
+  color: #ccc;
+}
+body.dark form label {
+  color: #ccc;
+}
+body.dark form button[type="submit"] {
+  background: #555;
+  color: #fff;
+}
+body.dark form button[type="submit"]:hover {
+  background: #777;
+}
+body.dark button:not(#themeBtn):not(#burgerBtn):not(#closeMenu) {
+  background: #444;
+  color: #e0e0e0;
+  border-color: #666;
+}
+body.dark h1, body.dark h2, body.dark h3 {
+  color: #e0e0e0;
+}
+body.dark p {
+  color: #ccc;
+}
+/* Профиль */
+body.dark #profileCard,
+body.dark #editModal > * {
+  background: #333;
+  color: #e0e0e0;
+  border-color: #555;
+}
+
+/* Кнопка переключения темы */
+#themeBtn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 2px 4px;
   border-radius: 4px;
-  background: #fff;
+  transition: transform 0.2s;
+}
+#themeBtn:hover {
+  transform: scale(1.2);
 }

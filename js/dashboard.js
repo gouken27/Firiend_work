@@ -1,22 +1,17 @@
-// ===== dashboard.js =====
-// Читает data/dashboard.json, рисует карточки статистики.
+// dashboard.js — точка входа страницы дашборда (pages/dashboard.html)
 
-import { getRoot, loadJSON } from './utils.js';
-import { renderHeader }      from './header.js';
+import { loadJSON }     from './utils.js';
+import { renderHeader } from './header.js';
+import { renderFooter } from './footer.js';
 
-const root = getRoot();
+const ROOT = '..';
 
 Promise.all([
-  renderHeader(),
-  loadJSON(root, 'data/dashboard.json')
-]).then(function(results) {
-  const stats    = results[1];
-  const statsEl  = document.getElementById('stats');
-
-  statsEl.innerHTML = stats.map(function(s) {
-    return '<div><strong>' + s.value + '</strong><p>' + s.title + '</p></div>';
-  }).join('');
-
-}).catch(function(err) {
-  console.error('dashboard:', err);
+  renderHeader(ROOT),
+  renderFooter(ROOT),
+  loadJSON(ROOT, 'data/dashboard.json')
+]).then(([, , stats]) => {
+  document.getElementById('stats').innerHTML = stats
+    .map(s => `<div><strong>${s.value}</strong><p>${s.title}</p></div>`)
+    .join('');
 });

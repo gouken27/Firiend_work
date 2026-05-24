@@ -1,76 +1,61 @@
-// ===== header.js =====
-// Читает pages/header.html и data/nav.json,
-// вставляет хедер в #header, подставляет ссылки и данные пользователя.
+// header.js — рендер шапки и переключение темы на всех страницах
 
-import { getRoot, loadHTML, loadJSON } from './utils.js';
+import { loadHTML, loadJSON } from './utils.js';
 
-export function renderHeader() {
-  const root = getRoot();
+// Применяем тему из localStorage немедленно, до рендера хедера,
+// чтобы избежать мерцания (flash of unstyled content)
+if (localStorage.getItem('theme') === 'dark') {
+  document.documentElement.classList.add('dark');
+}
 
-  // 1. Загружаем HTML-шаблон хедера и данные параллельно
+export function renderHeader(root) {
   return Promise.all([
     loadHTML(root, 'pages/header.html'),
     loadJSON(root, 'data/nav.json'),
     loadJSON(root, 'data/user.json')
-  ]).then(function(results) {
-    const html    = results[0];
-    const navData = results[1];
-    const user    = results[2];
-
-    // 2. Вставляем HTML хедера в DOM
+  ]).then(([html, navData, user]) => {
     const headerEl = document.getElementById('header');
     if (!headerEl) return;
     headerEl.innerHTML = html;
 
-    // 3. Строим ссылки навигации из nav.json (заменяем {ROOT} на реальный путь)
-    const navHTML = navData.map(function(item) {
-      const href = item.href.replace('{ROOT}', root);
-      return '<a href="' + href + '">' + item.label + '</a>';
-    }).join(' ');
+    // Навигация (десктоп + мобильная)
+    const navHTML = navData
+      .map(({ href, label }) => `<a href="${href.replace('{ROOT}', root)}">${label}</a>`)
+      .join(' ');
+    document.getElementById('mainNav')  ?.setHTML?.(navHTML) || (document.getElementById('mainNav')  && (document.getElementById('mainNav').innerHTML   = navHTML));
+    document.getElementById('mobileNav')?.setHTML?.(navHTML) || (document.getElementById('mobileNav') && (document.getElementById('mobileNav').innerHTML = navHTML));
 
-    // Вставляем в десктопный и мобильный nav
-    const mainNav   = document.getElementById('mainNav');
-    const mobileNav = document.getElementById('mobileNav');
-    if (mainNav)   mainNav.innerHTML   = navHTML;
-    if (mobileNav) mobileNav.innerHTML = navHTML;
+    // Логотип, аватар, имя
+    const set = (id, prop, val) => { const el = document.getElementById(id); if (el) el[prop] = val; };
+    set('logo',     'src',         `${root}/${user.logo}`);
+    set('text',     'src',         `${root}/${user.text}`);
+    set('avatar',   'src',         `${root}/${user.avatar}`);
+    set('username', 'textContent',  user.name);
+    set('logoLink',    'href', `${root}/index.html`);
+    set('profileLink', 'href', `${root}/pages/profile.html`);
 
-    // 4. Заполняем логотип, аватар, имя пользователя
-    const logo     = document.getElementById('logo');
-    const avatar   = document.getElementById('avatar');
-    const username = document.getElementById('username');
-
-    if (logo)     logo.src           = root + '/' + user.logo;
-    if (avatar)   avatar.src         = root + '/' + user.avatar;
-    if (username) username.textContent = user.name;
-
-    // 5. Ставим href на логотип и ссылку профиля
-    const logoLink    = document.getElementById('logoLink');
-    const profileLink = document.getElementById('profileLink');
-    if (logoLink)    logoLink.href    = root + '/index.html';
-    if (profileLink) profileLink.href = root + '/pages/profile.html';
-
-    // 6. Бургер-меню: открыть / закрыть
-    const burgerBtn  = document.getElementById('burgerBtn');
+    // Бургер-меню
     const mobileMenu = document.getElementById('mobileMenu');
-    const closeBtn   = document.getElementById('closeMenu');
-
-    if (burgerBtn && mobileMenu) {
-      burgerBtn.addEventListener('click', function() { mobileMenu.showModal(); });
-    }
-    if (closeBtn && mobileMenu) {
-      closeBtn.addEventListener('click', function() { mobileMenu.close(); });
-    }
-    // Закрыть по клику на backdrop
     if (mobileMenu) {
-      mobileMenu.addEventListener('click', function(e) {
+      document.getElementById('burgerBtn')?.addEventListener('click', () => mobileMenu.showModal());
+      document.getElementById('closeMenu')?.addEventListener('click', () => mobileMenu.close());
+      mobileMenu.addEventListener('click', e => {
         const r = mobileMenu.getBoundingClientRect();
-        if (e.clientX < r.left || e.clientX > r.right ||
-            e.clientY < r.top  || e.clientY > r.bottom) {
+        if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) {
           mobileMenu.close();
         }
       });
     }
-  }).catch(function(err) {
-    console.error('header:', err);
+
+    // Переключатель темы — кнопка гарантированно есть в DOM после innerHTML выше
+    const btn = document.getElementById('themeBtn');
+    if (btn) {
+      btn.textContent = document.documentElement.classList.contains('dark') ? '🌙' : '☀️';
+      btn.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        btn.textContent = isDark ? '🌙' : '☀️';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    }
   });
 }

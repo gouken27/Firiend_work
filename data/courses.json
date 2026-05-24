@@ -3,24 +3,24 @@
     "title": "Основы фотографии",
     "desc":  "Композиция, свет, выдержка — с нуля",
     "price": "2 999 ₽",
-    "img":   "https://picsum.photos/seed/c1/280/180"
+    "img":   "../../data/media/course/Course1.jpeg"
   },
   {
     "title": "Портретная съёмка",
     "desc":  "Постановка, работа с моделью и светом",
     "price": "4 999 ₽",
-    "img":   "https://picsum.photos/seed/c2/280/180"
+    "img":   "../../data/media/course/Course2.jpg"
   },
   {
     "title": "Пейзажная фотография",
     "desc":  "Золотой час, фильтры, экспозиция",
     "price": "3 999 ₽",
-    "img":   "https://picsum.photos/seed/c3/280/180"
+    "img":   "../../data/media/course/Course3.jpg"
   },
   {
     "title": "Ретушь в Photoshop",
     "desc":  "Цветокоррекция, слои, устранение дефектов",
     "price": "5 499 ₽",
-    "img":   "https://picsum.photos/seed/c4/280/180"
+    "img":   "../../data/media/course/Course4.jpg"
   }
 ]

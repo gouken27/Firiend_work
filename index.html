@@ -1,54 +1,80 @@
 <!DOCTYPE html>
+<!-- index.html — Главная страница сайта «Академия света» / «Фотограф мечты»
+     ТЗ §4.1: точка входа для новых пользователей; баннер, примеры работ,
+               преподаватели, форма обратной связи, шапка и подвал.
+     Данные подгружаются динамически через JS из data/main.json -->
 <html lang="ru">
 <head>
+  <script>if(localStorage.getItem("theme")==="dark")document.documentElement.classList.add("dark");</script>
   <meta charset="UTF-8">
+  <!-- Обязательный мета-тег адаптивности (ТЗ §7 «viewport») -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Уникальный заголовок вкладки (ТЗ §7 «<title>») -->
   <title>Фотограф мечты</title>
+  <!-- Фавикон — иконка во вкладке браузера, берётся из data/media/logo.png -->
   <link rel="icon" href="data/media/logo.png" type="image/png">
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Общие стили всего сайта (сброс, хедер, футер, формы, слайдер и т.д.) → css/style.css -->
+    <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <!-- CSS Swiper — библиотека слайдера, подключается из CDN (без установки) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 </head>
 <body>
+  <!-- Шапка сайта — пустой placeholder, наполняется через renderHeader() в main.js
+       Содержимое берётся из pages/header.html + data/nav.json + data/user.json -->
   <header id="header"></header>
 
   <main>
-    <!-- Герой: текст придёт из main.json -->
+    <!-- ── Герой-секция (ТЗ §4.1 «Баннер с ярким визуалом») ─────────────────
+         Тексты title и subtitle подгружаются из data/main.json → hero.title / hero.subtitle -->
     <section id="hero">
-      <h1 id="heroTitle"></h1>
-      <p  id="heroSubtitle"></p>
+      <h1 id="heroTitle"></h1>     <!-- Заголовок героя: «Фотограф мечты» -->
+      <p  id="heroSubtitle"></p>   <!-- Подзаголовок героя с призывом к действию -->
     </section>
 
-    <!-- Слайдер примеров работ -->
+    <!-- ── Слайдер примеров работ (ТЗ §4.1 «Блок Было→Стало») ──────────────
+         Слайды генерируются в main.js из data/main.json → examples[];
+         кнопки ← → управляют Swiper-инстанцией -->
     <section>
       <h2>Примеры работ</h2>
-      <div class="swiper-outer">
-        <button class="swiper-btn" id="prevBtn">&#8592;</button>
-        <div class="swiper">
-          <div class="swiper-wrapper" id="swiperWrapper"></div>
+      <div class="swiper-outer"> <!-- Обёртка: кнопки + слайдер (стиль → .swiper-outer) -->
+        <button class="swiper-btn" id="prevBtn">&#8592;</button> <!-- Кнопка «←», слушатель в main.js -->
+        <div class="swiper"> <!-- Корневой элемент Swiper (инициализируется в main.js через new Swiper('.swiper')) -->
+          <div class="swiper-wrapper" id="swiperWrapper"></div> <!-- Контейнер слайдов, наполняется в main.js -->
         </div>
-        <button class="swiper-btn" id="nextBtn">&#8594;</button>
+        <button class="swiper-btn" id="nextBtn">&#8594;</button> <!-- Кнопка «→», слушатель в main.js -->
       </div>
     </section>
 
-    <!-- Преподаватели -->
+    <!-- ── Блок преподавателей ───────────────────────────────────────────────
+         Карточки генерируются в main.js из data/main.json → teachers[] -->
     <section>
       <h2>Преподаватели</h2>
-      <div id="teachers"></div>
+      <div id="teachers"></div> <!-- Flex-контейнер карточек (стиль → #teachers) -->
     </section>
 
-    <!-- Обратная связь -->
-    <section>
+    <!-- ── Форма обратной связи (ТЗ §4.1 «футер с формой обратной связи») ───
+         Submit перехватывается в main.js: preventDefault + alert-заглушка -->
+    <section id="feedback">
       <h2>Обратная связь</h2>
       <form id="feedbackForm">
-        <label>Имя<br><input type="text" name="name"></label><br>
-        <label>Email<br><input type="email" name="email"></label><br>
-        <label>Сообщение<br><textarea name="message" rows="4"></textarea></label><br>
-        <button type="submit">Отправить</button>
+        <label>Имя<br><input type="text" name="name"></label><br>         <!-- Поле имени -->
+        <label>Email<br><input type="email" name="email"></label><br>     <!-- Поле email -->
+        <label>Сообщение<br><textarea name="message" rows="4"></textarea></label><br> <!-- Поле сообщения -->
+        <button type="submit">Отправить</button> <!-- Кнопка отправки (стиль → form button[type="submit"]) -->
       </form>
-    </section>
+    </sectionid=>
   </main>
 
+  <!-- Подвал сайта — пустой placeholder, наполняется через renderFooter() в main.js
+       Содержимое берётся из pages/footer.html + data/user.json -->
+  <footer id="footer"></footer>
+
+  <!-- JS Swiper — CDN-библиотека слайдера; должна загружаться ДО main.js -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Главный скрипт страницы; type="module" включает ES6-импорты (import/export) -->
   <script type="module" src="js/main.js"></script>
 </body>
 </html>

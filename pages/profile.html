@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <script>if(localStorage.getItem("theme")==="dark")document.documentElement.classList.add("dark");</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Профиль</title>
-  <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
 </head>
 <body>
   <header id="header"></header>
@@ -38,6 +42,8 @@
       <button type="button" id="cancelEdit">Отмена</button>
     </form>
   </dialog>
+
+  <footer id="footer"></footer>
 
   <script type="module" src="../js/profile.js"></script>
 </body>

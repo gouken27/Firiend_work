@@ -1,0 +1,35 @@
+/* pages.css — стили отдельных страниц: главная, курсы, дашборд, профиль */
+
+/* ── Главная: преподаватели ── */
+#teachers        { display: flex; gap: 24px; flex-wrap: wrap; }
+#teachers div    { text-align: center; }
+#teachers img    { border-radius: 50%; object-fit: cover; }
+#teachers p      { margin-top: 6px; font-size: 0.9rem; color: var(--text-muted); }
+
+/* ── Главная: форма обратной связи ── */
+#feedback        { margin-top: 16px; padding: 12px 0; }
+
+/* ── Дашборд: статистика ── */
+#stats           { display: flex; gap: 20px; flex-wrap: wrap; }
+#stats div       { border: 1px solid var(--border); border-radius: 6px;
+                   padding: 16px 24px; min-width: 140px; background: var(--bg-card); }
+#stats strong    { font-size: 1.8rem; display: block; }
+
+/* ── Курсы: сетка карточек ── */
+#courses-grid    { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+.course-card     { border: 1px solid var(--border); border-radius: 6px;
+                   overflow: hidden; background: var(--bg-card); }
+.course-card img { width: 100%; height: 160px; object-fit: cover; }
+.course-card h3,
+.course-card p,
+.course-card strong,
+.course-card button  { 
+    margin: 8px 12px; 
+    display: block; 
+}
+.course-card button  { margin-bottom: 12px; padding: 6px 14px; }
+
+/* ── Профиль ── */
+main section + section { margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--border); }
+#profileAvatar         { border-radius: 50%; object-fit: cover; margin-bottom: 10px; }
+#editBtn, #logoutBtn   { margin-top: 10px; margin-right: 8px; }

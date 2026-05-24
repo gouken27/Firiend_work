@@ -1,0 +1,71 @@
+/* layout.css — шапка, подвал, main, адаптив */
+
+/* ── Шапка ── */
+header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 10;
+}
+header nav       { display: flex; gap: 16px; flex: 1; }
+header nav a:hover { text-decoration: underline; }
+header #avatar   { border-radius: 50%; object-fit: cover; }
+
+/* ── Бургер ── */
+#burgerBtn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+}
+
+/* ── Мобилки ≤640px ── */
+@media (max-width: 640px) {
+  header nav { display: none; }
+  #burgerBtn { display: block; }
+  #username  { display: none; }
+}
+
+/* ── Мобильное меню ── */
+#mobileMenu {
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+}
+#mobileMenu nav { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+
+/* ── Main ── */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+main > * + * { margin-top: 48px; }
+main section  { padding: 12px 0; }
+
+/* ── Подвал ── */
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 20px;
+  border-top: 1px solid var(--border);
+  position: sticky;
+  bottom: 0;
+  background: var(--bg);
+  z-index: 10;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+footer a             { color: var(--text); text-decoration: underline; }
+footer a:hover       { color: var(--text-muted); }
+#footerUser          { display: flex; align-items: center; gap: 8px; }
+#footerAvatar        { border-radius: 50%; object-fit: cover; }
