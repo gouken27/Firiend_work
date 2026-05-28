@@ -244,3 +244,31 @@ main section + section { /* разделительная линия между �
     align-items: start; /* выравнивание по левому краю */
   }
 }
+
+.img-zoom input {
+  display: none; /* скрываем чекбокс */
+}
+
+.img-zoom { /* контейнер для эффекта увеличения изображения */
+  display: inline-block; /* позволяет применять трансформацию к изображению */
+  transition: transform 0.3s ease; /* плавный переход для контейнера */
+}
+
+.img-zoom img { /* изображение внутри контейнера */
+  display: block; /* плавный переход для трансформации */
+  border-radius: 6px; /* скругление углов */
+  width: 200px; /* раазмер превью */
+  transform-origin: top left; /* точка увеличения внииз впраааааво*/
+}
+
+.img-zoom input:checked ~ img { /* при наведении на контейнер */
+  transform: scale(1.5); /* увеличиваем изображение */
+}
+
+img {
+  transition: transform 0.3s ease; /* плавный переход для трансформации */
+}
+
+.course-page h1 { /* заголовок на странице курса */
+  margin-top: 70px; /* отступ сверху для заголовка */
+}
